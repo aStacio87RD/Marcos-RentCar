@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marcos Rent Car - Punta Cana</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f8f9fa;
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(90deg, #003366, #0099cc);
+      color: #fff;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      margin-top: .5rem;
+    }
+
+    .hero {
+      background: url('https://images.unsplash.com/photo-1605559424843-9e4a5c7c2ff9?auto=format&fit=crop&w=1350&q=80') center/cover;
+      color: white;
+      text-align: center;
+      padding: 100px 20px;
+    }
+
+    .hero h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+    }
+
+    .hero a {
+      background: #25D366;
+      color: white;
+      padding: 1rem 2rem;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .hero a:hover {
+      background: #1EBE57;
+    }
+
+    section {
+      padding: 3rem 1rem;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .service {
+      background: white;
+      border-radius: 15px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .service img {
+      width: 100%;
+      border-radius: 15px;
+      height: 160px;
+      object-fit: cover;
+    }
+
+    .service h3 {
+      margin: 1rem 0 .5rem;
+      color: #003366;
+    }
+
+    .contact {
+      text-align: center;
+      background: #003366;
+      color: white;
+      padding: 3rem 1rem;
+      border-top: 5px solid #25D366;
+    }
+
+    .contact h2 {
+      margin-bottom: 1rem;
+    }
+
+    .contact p {
+      font-size: 1.1rem;
+    }
+
+    footer {
+      text-align: center;
+      background: #002244;
+      color: #ccc;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .whatsapp-btn {
+      background: #25D366;
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: 1.1rem;
+    }
+
+    .whatsapp-btn:hover {
+      background: #1EBE57;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🚗 Marcos Rent Car</h1>
+    <p>Tu mejor opción en transporte y turismo en Punta Cana</p>
+  </header>
+
+  <section class="hero">
+    <h2>Explora Punta Cana con Estilo y Confort</h2>
+    <a href="https://wa.me/18094078708?text=Hola%20Marcos%20Rent%20Car!%20Quiero%20reservar%20un%20veh%C3%ADculo." target="_blank">💬 Reserva por WhatsApp</a>
+  </section>
+
+  <section id="servicios">
+    <h2 style="text-align:center;">Nuestros Servicios</h2>
+    <div class="services">
+      <div class="service">
+        <img src="https://images.unsplash.com/photo-1549924231-f129b911e442?auto=format&fit=crop&w=900&q=60" alt="Rent Car">
+        <h3>Renta de Autos</h3>
+        <p>Vehículos cómodos y modernos para tus viajes por toda la República Dominicana.</p>
+      </div>
+      <div class="service">
+        <img src="https://images.unsplash.com/photo-1524583036526-1e35c9a9ef1b?auto=format&fit=crop&w=900&q=60" alt="VIP Transport">
+        <h3>Transporte VIP</h3>
+        <p>Disfruta un servicio exclusivo desde y hacia el aeropuerto con chofer profesional.</p>
+      </div>
+      <div class="service">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=60" alt="Excursiones">
+        <h3>Excursiones Locales</h3>
+        <p>Vive experiencias inolvidables en playas, ríos y montañas dominicanas.</p>
+      </div>
+      <div class="service">
+        <img src="https://images.unsplash.com/photo-1590080875839-6cfb72b835b4?auto=format&fit=crop&w=900&q=60" alt="Yates">
+        <h3>Renta de Yates</h3>
+        <p>Ideal para despedidas, celebraciones y paseos exclusivos en el Caribe.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contacto">
+    <h2>📞 Contáctanos Hoy</h2>
+    <p>WhatsApp: <strong>+1 (809) 407-8708</strong></p>
+    <p>Email: <strong>marcosrentcar@gmail.com</strong></p>
+    <a href="https://wa.me/18094078708?text=Hola%20Marcos%20Rent%20Car!%20Estoy%20interesado%20en%20rentar%20un%20veh%C3%ADculo." class="whatsapp-btn" target="_blank">💬 Hablar por WhatsApp</a>
+  </section>
+
+  <footer>
+    © 2025 Marcos Rent Car | Punta Cana, República Dominicana
+  </footer>
+</body>
+</html>
