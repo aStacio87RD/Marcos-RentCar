@@ -1,42 +1,45 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Marcos Rent Car - Punta Cana</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Poppins", sans-serif; }
+
     body {
-      font-family: 'Poppins', sans-serif;
-      background: #f9f9f9;
+      background: #f7f8fa;
       color: #222;
+      overflow-x: hidden;
     }
 
     header {
-      background: #000;
+      background: linear-gradient(90deg, #000 0%, #222 100%);
       color: #fff;
       text-align: center;
-      padding: 20px;
+      padding: 30px 10px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.4);
     }
 
-    header h1 {
-      font-size: 2rem;
-      letter-spacing: 1px;
-    }
+    header h1 { font-size: 2rem; letter-spacing: 1px; }
+    header p { color: #ccc; }
 
     /* SLIDER */
     .slider {
       position: relative;
       width: 100%;
-      height: 70vh;
+      height: 75vh;
       overflow: hidden;
     }
 
     .slides {
       display: flex;
-      width: 400%;
+      width: 600%;
       height: 100%;
-      animation: slide 20s infinite;
+      animation: slide 25s infinite;
     }
 
     .slides img {
@@ -47,76 +50,97 @@
     }
 
     @keyframes slide {
-      0% { transform: translateX(0); }
-      25% { transform: translateX(0); }
-      30% { transform: translateX(-100%); }
-      55% { transform: translateX(-100%); }
-      60% { transform: translateX(-200%); }
-      85% { transform: translateX(-200%); }
-      90% { transform: translateX(-300%); }
-      100% { transform: translateX(-300%); }
+      0%, 15% { transform: translateX(0); }
+      20%, 35% { transform: translateX(-100%); }
+      40%, 55% { transform: translateX(-200%); }
+      60%, 75% { transform: translateX(-300%); }
+      80%, 95% { transform: translateX(-400%); }
+      100% { transform: translateX(-500%); }
     }
 
     /* SERVICIOS */
     section.servicios {
-      padding: 50px 20px;
+      padding: 60px 20px;
       text-align: center;
       background: #fff;
     }
 
     section.servicios h2 {
-      font-size: 2rem;
-      margin-bottom: 30px;
+      font-size: 2.2rem;
+      margin-bottom: 40px;
       color: #111;
+      text-transform: uppercase;
     }
 
     .grid-servicios {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      max-width: 1000px;
+      gap: 30px;
+      max-width: 1100px;
       margin: 0 auto;
     }
 
     .servicio {
-      background: #f2f2f2;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: linear-gradient(180deg, #fff, #f1f1f1);
+      padding: 25px;
+      border-radius: 16px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
     }
 
     .servicio:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transform: translateY(-6px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
     }
 
     .servicio img {
       width: 100%;
-      height: 160px;
+      height: 180px;
+      border-radius: 12px;
       object-fit: cover;
-      border-radius: 10px;
       margin-bottom: 15px;
     }
 
     .servicio h3 {
       margin-bottom: 10px;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       color: #000;
     }
 
     .servicio p {
-      font-size: 0.95rem;
       color: #555;
+      font-size: 0.95rem;
+    }
+
+    /* BOTÓN WHATSAPP */
+    .whatsapp {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25d366;
+      color: #fff;
+      font-size: 26px;
+      border-radius: 50%;
+      padding: 15px;
+      text-decoration: none;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
     }
 
     /* FOOTER */
     footer {
-      background: #000;
-      color: #fff;
+      background: #111;
+      color: #ccc;
       text-align: center;
-      padding: 20px;
-      margin-top: 50px;
+      padding: 25px 10px;
+      margin-top: 60px;
     }
 
     footer a {
@@ -126,59 +150,148 @@
     }
 
     @media (max-width: 768px) {
-      header h1 { font-size: 1.5rem; }
-      .slider { height: 50vh; }
+      header h1 { font-size: 1.6rem; }
+      .slider { height: 55vh; }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>Marcos Rent Car - Punta Cana</h1>
-    <p>Transporte VIP | Autos de lujo | Excursiones | Alquileres</p>
+    <h1 data-lang="title">Marcos Rent Car - Punta Cana</h1>
+    <p data-lang="subtitle">Transporte VIP | Alquiler de Autos | Yates | Excursiones</p>
   </header>
 
+  <!-- SLIDER -->
   <div class="slider">
     <div class="slides">
-      <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1000&q=80" alt="Auto deportivo">
-      <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1000&q=80" alt="SUV familiar">
-      <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1000&q=80" alt="Jeep 4x4">
-      <img src="https://images.unsplash.com/photo-1493238792000-8113da705763?auto=format&fit=crop&w=1000&q=80" alt="Convertible">
+      <img src="https://images.unsplash.com/photo-1511910849309-0e2a1a4ab6b7?auto=format&fit=crop&w=1000&q=80" alt="Auto deportivo">
+      <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1000&q=80" alt="SUV">
+      <img src="https://images.unsplash.com/photo-1563720226047-18170b62a38f?auto=format&fit=crop&w=1000&q=80" alt="Yate">
+      <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1000&q=80" alt="Transporte VIP">
+      <img src="https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?auto=format&fit=crop&w=1000&q=80" alt="Excursión">
+      <img src="https://images.unsplash.com/photo-1581578017423-2952e6e7f82f?auto=format&fit=crop&w=1000&q=80" alt="Transporte de empresa">
     </div>
   </div>
 
+  <!-- SERVICIOS -->
   <section class="servicios">
-    <h2>Nuestros Servicios</h2>
+    <h2 data-lang="servicesTitle">Nuestros Servicios</h2>
     <div class="grid-servicios">
       <div class="servicio">
-        <img src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=800&q=80" alt="Transporte al Aeropuerto">
-        <h3>Transporte al Aeropuerto</h3>
-        <p>Traslados rápidos y seguros desde y hacia el aeropuerto de Punta Cana.</p>
+        <img src="https://images.unsplash.com/photo-1493238792000-8113da705763?auto=format&fit=crop&w=800&q=80" alt="Rent Car">
+        <h3 data-lang="rentCarTitle">Alquiler de Autos</h3>
+        <p data-lang="rentCarText">Renta tu vehículo ideal: deportivo, SUV, familiar o de lujo con entrega a domicilio.</p>
       </div>
 
       <div class="servicio">
-        <img src="https://images.unsplash.com/photo-1493238792000-8113da705763?auto=format&fit=crop&w=800&q=80" alt="Rent Car">
-        <h3>Alquiler de Autos</h3>
-        <p>Amplia gama de vehículos: deportivos, familiares, SUV y más.</p>
+        <img src="https://images.unsplash.com/photo-1581578017423-2952e6e7f82f?auto=format&fit=crop&w=800&q=80" alt="Transporte VIP">
+        <h3 data-lang="vipTitle">Transporte VIP</h3>
+        <p data-lang="vipText">Vive la experiencia de viajar con clase, puntualidad y comodidad premium.</p>
+      </div>
+
+      <div class="servicio">
+        <img src="https://images.unsplash.com/photo-1563720226047-18170b62a38f?auto=format&fit=crop&w=800&q=80" alt="Yate">
+        <h3 data-lang="yachtTitle">Renta de Yates</h3>
+        <p data-lang="yachtText">Disfruta del mar con estilo en nuestros yates privados con tripulación incluida.</p>
       </div>
 
       <div class="servicio">
         <img src="https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?auto=format&fit=crop&w=800&q=80" alt="Excursiones">
-        <h3>Excursiones Locales</h3>
-        <p>Descubre las maravillas de Punta Cana con nuestras excursiones guiadas.</p>
-      </div>
-
-      <div class="servicio">
-        <img src="https://images.unsplash.com/photo-1549924231-f129b911e442?auto=format&fit=crop&w=800&q=80" alt="Servicio VIP">
-        <h3>Transporte VIP</h3>
-        <p>Viaja con estilo y comodidad con nuestro exclusivo servicio VIP.</p>
+        <h3 data-lang="excursionsTitle">Excursiones & Transporte Empresarial</h3>
+        <p data-lang="excursionsText">Organizamos excursiones y transporte de personal para empresas con tarifas preferenciales.</p>
       </div>
     </div>
   </section>
 
   <footer>
-    <p>© 2025 Marcos Rent Car - Punta Cana | <a href="https://wa.me/18094078708" target="_blank">Contáctanos por WhatsApp</a></p>
+    <p data-lang="footerText">© 2025 Marcos Rent Car - Punta Cana | <a href="https://wa.me/18094078708" target="_blank">Contáctanos por WhatsApp</a></p>
   </footer>
 
+  <!-- BOTÓN WHATSAPP -->
+  <a href="https://wa.me/18094078708" class="whatsapp" target="_blank">💬</a>
+
+  <!-- SCRIPT DE TRADUCCIÓN AUTOMÁTICA -->
+  <script>
+    const translations = {
+      en: {
+        title: "Marcos Rent Car - Punta Cana",
+        subtitle: "VIP Transport | Car Rental | Yachts | Excursions",
+        servicesTitle: "Our Services",
+        rentCarTitle: "Car Rental",
+        rentCarText: "Rent your ideal vehicle: sports, SUV, family or luxury with home delivery.",
+        vipTitle: "VIP Transport",
+        vipText: "Experience premium travel with comfort, punctuality and elegance.",
+        yachtTitle: "Yacht Rental",
+        yachtText: "Enjoy the sea in style aboard our private yachts with full crew.",
+        excursionsTitle: "Excursions & Corporate Transport",
+        excursionsText: "We organize tours and corporate transport with special business rates.",
+        footerText: "© 2025 Marcos Rent Car - Punta Cana | Contact us on WhatsApp"
+      },
+      fr: {
+        title: "Marcos Rent Car - Punta Cana",
+        subtitle: "Transport VIP | Location de Voitures | Yachts | Excursions",
+        servicesTitle: "Nos Services",
+        rentCarTitle: "Location de Voitures",
+        rentCarText: "Louez votre voiture idéale : sportive, SUV, familiale ou de luxe, livrée à domicile.",
+        vipTitle: "Transport VIP",
+        vipText: "Voyagez avec style, confort et ponctualité.",
+        yachtTitle: "Location de Yachts",
+        yachtText: "Profitez de la mer à bord de nos yachts privés avec équipage.",
+        excursionsTitle: "Excursions & Transport d’Entreprise",
+        excursionsText: "Nous organisons des excursions et le transport du personnel pour les entreprises.",
+        footerText: "© 2025 Marcos Rent Car - Punta Cana | Contactez-nous sur WhatsApp"
+      },
+      pt: {
+        title: "Marcos Rent Car - Punta Cana",
+        subtitle: "Transporte VIP | Aluguel de Carros | Iates | Excursões",
+        servicesTitle: "Nossos Serviços",
+        rentCarTitle: "Aluguel de Carros",
+        rentCarText: "Alugue o carro ideal: esportivo, SUV, familiar ou de luxo com entrega em domicílio.",
+        vipTitle: "Transporte VIP",
+        vipText: "Viaje com conforto, pontualidade e estilo premium.",
+        yachtTitle: "Aluguel de Iates",
+        yachtText: "Desfrute do mar com estilo em nossos iates privados com tripulação.",
+        excursionsTitle: "Excursões & Transporte Corporativo",
+        excursionsText: "Organizamos excursões e transporte de pessoal corporativo com tarifas especiais.",
+        footerText: "© 2025 Marcos Rent Car - Punta Cana | Contate-nos no WhatsApp"
+      },
+      it: {
+        title: "Marcos Rent Car - Punta Cana",
+        subtitle: "Trasporto VIP | Noleggio Auto | Yacht | Escursioni",
+        servicesTitle: "I Nostri Servizi",
+        rentCarTitle: "Noleggio Auto",
+        rentCarText: "Noleggia l'auto ideale: sportiva, SUV, familiare o di lusso, consegna a domicilio.",
+        vipTitle: "Trasporto VIP",
+        vipText: "Viaggia con comfort, puntualità e stile esclusivo.",
+        yachtTitle: "Noleggio Yacht",
+        yachtText: "Goditi il mare a bordo dei nostri yacht privati con equipaggio completo.",
+        excursionsTitle: "Escursioni & Trasporto Aziendale",
+        excursionsText: "Organizziamo escursioni e trasporto aziendale con tariffe speciali.",
+        footerText: "© 2025 Marcos Rent Car - Punta Cana | Contattaci su WhatsApp"
+      },
+      ru: {
+        title: "Marcos Rent Car - Пунта-Кана",
+        subtitle: "VIP Транспорт | Аренда Авто | Яхты | Экскурсии",
+        servicesTitle: "Наши Услуги",
+        rentCarTitle: "Аренда Автомобилей",
+        rentCarText: "Арендуйте идеальный автомобиль: спортивный, SUV, семейный или люксовый.",
+        vipTitle: "VIP Транспорт",
+        vipText: "Путешествуйте с комфортом, пунктуальностью и стилем.",
+        yachtTitle: "Аренда Яхт",
+        yachtText: "Наслаждайтесь морем на наших частных яхтах с экипажем.",
+        excursionsTitle: "Экскурсии и Корпоративный Транспорт",
+        excursionsText: "Организуем экскурсии и транспорт для сотрудников компаний.",
+        footerText: "© 2025 Marcos Rent Car - Пунта-Кана | Свяжитесь с нами в WhatsApp"
+      }
+    };
+
+    const userLang = navigator.language.slice(0, 2);
+    const selectedLang = translations[userLang] ? userLang : "es";
+    document.querySelectorAll("[data-lang]").forEach(el => {
+      const key = el.getAttribute("data-lang");
+      if (translations[selectedLang][key]) el.innerText = translations[selectedLang][key];
+    });
+  </script>
 </body>
 </html>
