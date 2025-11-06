@@ -119,11 +119,6 @@
       animation: textFloat 4s ease-in-out infinite alternate;
     }
 
-    @keyframes textFloat {
-      from { transform: perspective(800px) rotateX(15deg) translateY(0); }
-      to { transform: perspective(800px) rotateX(-15deg) translateY(-8px); }
-    }
-
     .hero-text a {
       display: inline-block;
       margin-top: 1rem;
@@ -234,10 +229,6 @@
       font-weight: 600;
       text-decoration: none;
       transition: 0.3s;
-    }
-
-    .contact a.whats-cta:hover {
-      transform: scale(1.05);
     }
 
     footer {
@@ -357,100 +348,61 @@
   <script>
     const translations = {
       es: {
-        t1: "🚗 Marcos Rent Car",
-        t2: "Conduce el Futuro del Turismo en Punta Cana",
-        t3: "Explora con Estilo, Conduce con Libertad",
-        t4: "💬 Reserva por WhatsApp",
-        t5: "Servicios Premium",
-        t6: "Renta de Autos",
-        t7: "Autos deportivos, familiares y SUV modernos, perfectos para cualquier viaje.",
-        t8: "Transporte VIP",
-        t9: "Viaja con lujo y puntualidad, con chofer privado desde y hacia el aeropuerto.",
-        t10: "Excursiones",
-        t11: "Excursiones guiadas a playas, ríos y montañas — experiencias auténticas y seguras.",
-        t12: "Renta de Yates",
-        t13: "Alquila yates para celebraciones privadas, paseos al atardecer y eventos especiales.",
-        t14: "📞 Contáctanos",
-        t15: "WhatsApp: +1 (809) 393-7692",
-        t16: "Email: marcobastardo958@gmail.com",
-        t17: "💬 Escribir por WhatsApp",
-        t18: "© 2025 Marcos Rent Car | Punta Cana, República Dominicana",
-        t19: "💬 Déjanos tu comentario",
-        t20: "Enviar por WhatsApp"
+        t1:"🚗 Marcos Rent Car",t2:"Conduce el Futuro del Turismo en Punta Cana",t3:"Explora con Estilo, Conduce con Libertad",t4:"💬 Reserva por WhatsApp",t5:"Servicios Premium",t6:"Renta de Autos",t7:"Autos deportivos, familiares y SUV modernos, perfectos para cualquier viaje.",t8:"Transporte VIP",t9:"Viaja con lujo y puntualidad, con chofer privado desde y hacia el aeropuerto.",t10:"Excursiones",t11:"Excursiones guiadas a playas, ríos y montañas — experiencias auténticas y seguras.",t12:"Renta de Yates",t13:"Alquila yates para celebraciones privadas, paseos al atardecer y eventos especiales.",t14:"📞 Contáctanos",t15:"WhatsApp: +1 (809) 393-7692",t16:"Email: marcobastardo958@gmail.com",t17:"💬 Escribir por WhatsApp",t18:"© 2025 Marcos Rent Car | Punta Cana, República Dominicana",t19:"💬 Déjanos tu comentario",t20:"Enviar por WhatsApp"
       },
       en: {
-        t1: "🚗 Marcos Rent Car",
-        t2: "Drive the Future of Tourism in Punta Cana",
-        t3: "Explore with Style, Drive with Freedom",
-        t4: "💬 Book via WhatsApp",
-        t5: "Premium Services",
-        t6: "Car Rental",
-        t7: "Sports, family and SUV cars perfect for any trip.",
-        t8: "VIP Transport",
-        t9: "Travel with luxury and punctuality, with a private driver from and to the airport.",
-        t10: "Excursions",
-        t11: "Guided tours to beaches, rivers and mountains — authentic and safe experiences.",
-        t12: "Yacht Rental",
-        t13: "Rent yachts for private celebrations, sunset cruises and special events.",
-        t14: "📞 Contact Us",
-        t15: "WhatsApp: +1 (809) 393-7692",
-        t16: "Email: marcobastardo958@gmail.com",
-        t17: "💬 Message via WhatsApp",
-        t18: "© 2025 Marcos Rent Car | Punta Cana, Dominican Republic",
-        t19: "💬 Leave us your comment",
-        t20: "Send via WhatsApp"
-      }
+        t1:"🚗 Marcos Rent Car",t2:"Drive the Future of Tourism in Punta Cana",t3:"Explore with Style, Drive with Freedom",t4:"💬 Book via WhatsApp",t5:"Premium Services",t6:"Car Rental",t7:"Sports, family, and SUV cars perfect for any trip.",t8:"VIP Transport",t9:"Travel with luxury and punctuality, with a private driver from and to the airport.",t10:"Excursions",t11:"Guided tours to beaches, rivers, and mountains — authentic and safe experiences.",t12:"Yacht Rental",t13:"Rent yachts for private celebrations, sunset cruises, and special events.",t14:"📞 Contact Us",t15:"WhatsApp: +1 (809) 393-7692",t16:"Email: marcobastardo958@gmail.com",t17:"💬 Message via WhatsApp",t18:"© 2025 Marcos Rent Car | Punta Cana, Dominican Republic",t19:"💬 Leave us your comment",t20:"Send via WhatsApp"
+      },
+      pt:{t1:"🚗 Marcos Rent Car",t2:"Dirija o Futuro do Turismo em Punta Cana",t3:"Explore com Estilo, Dirija com Liberdade",t4:"💬 Reserve pelo WhatsApp",t5:"Serviços Premium",t6:"Aluguel de Carros",t7:"Carros esportivos, familiares e SUVs modernos, perfeitos para qualquer viagem.",t8:"Transporte VIP",t9:"Viaje com luxo e pontualidade, com motorista particular do e para o aeroporto.",t10:"Excursões",t11:"Passeios guiados para praias, rios e montanhas — experiências autênticas e seguras.",t12:"Aluguel de Iates",t13:"Alugue iates para festas privadas, passeios ao pôr do sol e eventos especiais.",t14:"📞 Contate-nos",t15:"WhatsApp: +1 (809) 393-7692",t16:"Email: marcobastardo958@gmail.com",t17:"💬 Enviar pelo WhatsApp",t18:"© 2025 Marcos Rent Car | Punta Cana, República Dominicana",t19:"💬 Deixe seu comentário",t20:"Enviar pelo WhatsApp"},
+      it:{t1:"🚗 Marcos Rent Car",t2:"Guida il Futuro del Turismo a Punta Cana",t3:"Esplora con Stile, Guida con Libertà",t4:"💬 Prenota su WhatsApp",t5:"Servizi Premium",t6:"Noleggio Auto",t7:"Auto sportive, familiari e SUV moderni, perfette per ogni viaggio.",t8:"Trasporto VIP",t9:"Viaggia con lusso e puntualità, con autista privato da e per l’aeroporto.",t10:"Escursioni",t11:"Escursioni guidate su spiagge, fiumi e montagne — esperienze autentiche e sicure.",t12:"Noleggio Yacht",t13:"Noleggia yacht per feste private, crociere al tramonto ed eventi speciali.",t14:"📞 Contattaci",t15:"WhatsApp: +1 (809) 393-7692",t16:"Email: marcobastardo958@gmail.com",t17:"💬 Scrivi su WhatsApp",t18:"© 2025 Marcos Rent Car | Punta Cana, Repubblica Dominicana",t19:"💬 Lasciaci un commento",t20:"Invia via WhatsApp"},
+      ru:{t1:"🚗 Marcos Rent Car",t2:"Веди будущее туризма в Пунта-Кане",t3:"Исследуй со стилем, води с свободой",t4:"💬 Забронировать через WhatsApp",t5:"Премиум Услуги",t6:"Аренда Авто",t7:"Спортивные, семейные и современные внедорожники — идеальны для любого путешествия.",t8:"VIP Транспорт",t9:"Путешествуй с роскошью и пунктуальностью, с личным водителем от и до аэропорта.",t10:"Экскурсии",t11:"Проведённые туры на пляжи, реки и горы — аутентичные и безопасные приключения.",t12:"Аренда Яхт",t13:"Арендуйте яхты для частных вечеринок, закатных круизов и особых событий.",t14:"📞 Связаться с нами",t15:"WhatsApp: +1 (809) 393-7692",t16:"Email: marcobastardo958@gmail.com",t17:"💬 Написать в WhatsApp",t18:"© 2025 Marcos Rent Car | Пунта-Кана, Доминиканская Республика",t19:"💬 Оставьте комментарий",t20:"Отправить через WhatsApp"}
     };
 
     function changeLang(lang) {
-      const elements = document.querySelectorAll("[id^='t']");
-      elements.forEach(el => {
-        if (translations[lang][el.id]) el.textContent = translations[lang][el.id];
-      });
+      const txt = translations[lang];
+      for (const id in txt) document.getElementById(id).innerText = txt[id];
 
-      // Actualiza placeholders del formulario
       if (lang === "en") {
         document.getElementById("nombre").placeholder = "Name";
         document.getElementById("correo").placeholder = "Email";
         document.getElementById("comentario").placeholder = "Write your comment here...";
+      } else if (lang === "pt") {
+        document.getElementById("nombre").placeholder = "Nome";
+        document.getElementById("correo").placeholder = "Email";
+        document.getElementById("comentario").placeholder = "Escreva seu comentário aqui...";
+      } else if (lang === "it") {
+        document.getElementById("nombre").placeholder = "Nome";
+        document.getElementById("correo").placeholder = "Email";
+        document.getElementById("comentario").placeholder = "Scrivi il tuo commento qui...";
+      } else if (lang === "ru") {
+        document.getElementById("nombre").placeholder = "Имя";
+        document.getElementById("correo").placeholder = "Эл. почта";
+        document.getElementById("comentario").placeholder = "Напишите ваш комментарий...";
       } else {
         document.getElementById("nombre").placeholder = "Nombre";
         document.getElementById("correo").placeholder = "Correo electrónico";
         document.getElementById("comentario").placeholder = "Escribe tu comentario aquí...";
       }
-
-      document.documentElement.lang = lang;
     }
 
-    // Detecta idioma del navegador
-    const userLang = navigator.language.slice(0, 2);
+    const userLang = navigator.language.slice(0,2);
     const defaultLang = translations[userLang] ? userLang : "es";
     document.getElementById("lang").value = defaultLang;
     changeLang(defaultLang);
 
-    // WhatsApp desde formulario
-    function enviarWhatsApp() {
-      const nombre = document.getElementById("nombre").value.trim();
-      const correo = document.getElementById("correo").value.trim();
-      const comentario = document.getElementById("comentario").value.trim();
-
-      if (!nombre || !correo || !comentario) {
-        alert("Por favor completa todos los campos antes de enviar. ❗");
-        return;
-      }
-
-      const mensaje = `Hola! 👋%0AQuiero dejar un comentario:%0A%0A*Nombre:* ${nombre}%0A*Correo:* ${correo}%0A*Comentario:* ${comentario}`;
-      const numero = "18093937692";
-      window.open(`https://wa.me/${numero}?text=${mensaje}`, "_blank");
+    function enviarWhatsApp(){
+      const nombre=document.getElementById("nombre").value.trim();
+      const correo=document.getElementById("correo").value.trim();
+      const comentario=document.getElementById("comentario").value.trim();
+      if(!nombre||!correo||!comentario){alert("Por favor completa todos los campos ❗");return;}
+      const mensaje=`Hola! 👋%0AQuiero dejar un comentario:%0A%0A*Nombre:* ${nombre}%0A*Correo:* ${correo}%0A*Comentario:* ${comentario}`;
+      window.open(`https://wa.me/18093937692?text=${mensaje}`,"_blank");
     }
 
-    // Envío de servicios a WhatsApp
-    document.querySelectorAll(".service").forEach(serv => {
-      serv.addEventListener("click", () => {
-        const servicio = serv.dataset.service;
-        const mensaje = `Hola 👋, estoy interesado en su servicio de *${servicio}*.`;
-        const numero = "18093937692";
-        window.open(`https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`, "_blank");
+    document.querySelectorAll(".service").forEach(s=>{
+      s.addEventListener("click",()=>{
+        const msg=`Hola 👋, estoy interesado en su servicio de *${s.dataset.service}*.`;
+        window.open(`https://wa.me/18093937692?text=${encodeURIComponent(msg)}`,"_blank");
       });
     });
   </script>
