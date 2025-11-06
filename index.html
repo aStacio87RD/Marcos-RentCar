@@ -1,297 +1,664 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Marcos Rent Car - Punta Cana</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Poppins", sans-serif; }
-
-    body {
-      background: #f7f8fa;
-      color: #222;
-      overflow-x: hidden;
+    :root{
+      --accent1:#00e6ff;
+      --accent2:#00ff99;
+      --dark:#0b0b12;
+      --card:#0f1720;
+      --glass: rgba(255,255,255,0.04);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(180deg,#071025 0%, #07122b 60%);
+      color:#e6eef6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
     }
 
-    header {
-      background: linear-gradient(90deg, #000 0%, #222 100%);
-      color: #fff;
-      text-align: center;
-      padding: 30px 10px;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+    /* HEADER */
+    header{
+      position:relative;
+      padding:22px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      backdrop-filter: blur(6px);
+      background: linear-gradient(90deg, rgba(0,0,0,0.35), rgba(0,0,0,0.15));
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+      z-index:50;
+    }
+    .brand{
+      display:flex;
+      gap:14px;
+      align-items:center;
+    }
+    .logo{
+      font-family: "Orbitron", sans-serif;
+      font-size:1.45rem;
+      letter-spacing:2px;
+      padding:10px 14px;
+      border-radius:12px;
+      background:linear-gradient(90deg,var(--accent1),var(--accent2));
+      color: #021018;
+      box-shadow:0 6px 22px rgba(0,255,170,0.08);
+      transform: translateZ(0);
+    }
+    .tagline{
+      font-size:0.92rem;
+      color:rgba(255,255,255,0.9);
     }
 
-    header h1 { font-size: 2rem; letter-spacing: 1px; }
-    header p { color: #ccc; }
+    /* LANG SELECT */
+    .lang-wrap{display:flex; align-items:center; gap:8px}
+    .lang-btn{
+      display:flex; align-items:center; gap:6px;
+      background:rgba(255,255,255,0.03);
+      border-radius:10px; padding:6px 8px; cursor:pointer;
+      border:1px solid rgba(255,255,255,0.03);
+      transition: all .18s ease;
+    }
+    .lang-btn:hover{transform: translateY(-3px); box-shadow:0 6px 18px rgba(0,0,0,0.4)}
+    .flag{width:22px; height:14px; object-fit:cover; border-radius:2px}
 
     /* SLIDER */
-    .slider {
-      position: relative;
-      width: 100%;
-      height: 75vh;
-      overflow: hidden;
+    .slider{position:relative; height:62vh; max-height:760px; overflow:hidden; border-radius:12px; margin:18px auto; width:96%; box-shadow: 0 20px 60px rgba(2,6,23,0.7)}
+    .slides{display:flex;width:600%; height:100%; animation: slide 28s linear infinite}
+    .slides img{width:100%; height:100%; object-fit:cover; flex:0 0 100%;}
+    @keyframes slide{
+      0%{transform:translateX(0)}
+      16.66%{transform:translateX(0)}
+      33.32%{transform:translateX(-100%)}
+      49.98%{transform:translateX(-100%)}
+      66.64%{transform:translateX(-200%)}
+      83.3%{transform:translateX(-300%)}
+      100%{transform:translateX(-400%)}
+    }
+    .overlay{
+      position:absolute; inset:0; display:flex; align-items:center; justify-content:center; z-index:2;
+      pointer-events:none;
+    }
+    .hero{
+      text-align:center; pointer-events:auto;
+    }
+    .hero h2{font-family:"Orbitron"; font-size:2.6rem; margin:0; background:linear-gradient(90deg,var(--accent1),var(--accent2)); -webkit-background-clip:text; color:transparent; text-shadow:0 8px 30px rgba(0,0,0,0.6)}
+    .hero p{margin-top:8px; opacity:.9}
+    .cta{
+      margin-top:14px; display:inline-flex; gap:10px; pointer-events:auto;
+    }
+    .btn{
+      display:inline-flex; align-items:center; gap:10px; padding:12px 18px; border-radius:999px;
+      background: linear-gradient(90deg,var(--accent1),var(--accent2)); color:#021018; font-weight:700; text-decoration:none; border:none; cursor:pointer;
+      box-shadow:0 8px 30px rgba(0,255,170,0.08);
+      transition: transform .18s ease;
+    }
+    .btn:hover{transform:translateY(-4px)}
+
+    /* MAIN GRID */
+    main{max-width:1200px; margin:26px auto; padding:0 18px 60px}
+
+    /* SERVICES 2x2 */
+    .services{display:grid; grid-template-columns:repeat(2,1fr); gap:18px}
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:12px; padding:16px; display:flex; gap:14px; align-items:flex-start; border:1px solid rgba(255,255,255,0.03);
+      transition: transform .18s ease, box-shadow .18s ease;
+      min-height:150px;
+    }
+    .card:hover{transform:translateY(-8px); box-shadow:0 28px 48px rgba(2,6,23,0.6)}
+    .card img{width:160px; height:100px; object-fit:cover; border-radius:10px; flex-shrink:0}
+    .card h3{margin:0 0 6px 0}
+    .card p{margin:0; color:rgba(255,255,255,0.85)}
+
+    /* RIGHT PANEL - FORM + CONTACT */
+    .panel{margin-top:22px; display:grid; grid-template-columns:1fr 420px; gap:20px; align-items:start}
+    .panel .left{display:block}
+    .panel .right{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      padding:18px; border-radius:12px; border:1px solid rgba(255,255,255,0.03)
     }
 
-    .slides {
-      display: flex;
-      width: 600%;
-      height: 100%;
-      animation: slide 25s infinite;
+    /* FORM */
+    form{display:grid; gap:10px}
+    label{font-size:0.85rem; color:rgba(255,255,255,0.85)}
+    input,textarea,select{
+      width:100%; padding:10px 12px; border-radius:10px; border:1px solid rgba(255,255,255,0.06);
+      background:transparent; color: #e6eef6; outline:none;
+    }
+    textarea{min-height:92px; resize:vertical}
+    .row{display:flex; gap:10px}
+    .row .col{flex:1}
+
+    .actions{display:flex; gap:10px; margin-top:8px}
+    .muted{font-size:0.85rem; color:rgba(255,255,255,0.6)}
+
+    /* FLOATING WHATSAPP */
+    .whatsapp{
+      position:fixed; right:18px; bottom:18px; z-index:80;
+      background:linear-gradient(90deg,#25d366,#00c06b); width:64px; height:64px; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 18px 48px rgba(0,0,0,0.45); cursor:pointer; border: none;
+      transition: transform .12s ease;
+    }
+    .whatsapp:hover{transform:translateY(-6px)}
+
+    footer{margin-top:40px; text-align:center; padding:24px 12px; color:rgba(255,255,255,0.6)}
+
+    /* RESPONSIVE */
+    @media (max-width:980px){
+      .services{grid-template-columns:1fr}
+      .panel{grid-template-columns:1fr}
+      .card img{width:120px;height:84px}
+      .slides{animation-duration:36s}
+    }
+    @media (max-width:520px){
+      header{padding:12px}
+      .logo{font-size:1rem;padding:8px}
+      .hero h2{font-size:1.35rem}
+      .slides{animation-duration:42s}
     }
 
-    .slides img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: brightness(0.7);
-    }
-
-    @keyframes slide {
-      0%, 15% { transform: translateX(0); }
-      20%, 35% { transform: translateX(-100%); }
-      40%, 55% { transform: translateX(-200%); }
-      60%, 75% { transform: translateX(-300%); }
-      80%, 95% { transform: translateX(-400%); }
-      100% { transform: translateX(-500%); }
-    }
-
-    /* SERVICIOS */
-    section.servicios {
-      padding: 60px 20px;
-      text-align: center;
-      background: #fff;
-    }
-
-    section.servicios h2 {
-      font-size: 2.2rem;
-      margin-bottom: 40px;
-      color: #111;
-      text-transform: uppercase;
-    }
-
-    .grid-servicios {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .servicio {
-      background: linear-gradient(180deg, #fff, #f1f1f1);
-      padding: 25px;
-      border-radius: 16px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
-
-    .servicio:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-    }
-
-    .servicio img {
-      width: 100%;
-      height: 180px;
-      border-radius: 12px;
-      object-fit: cover;
-      margin-bottom: 15px;
-    }
-
-    .servicio h3 {
-      margin-bottom: 10px;
-      font-size: 1.3rem;
-      color: #000;
-    }
-
-    .servicio p {
-      color: #555;
-      font-size: 0.95rem;
-    }
-
-    /* BOTÓN WHATSAPP */
-    .whatsapp {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #25d366;
-      color: #fff;
-      font-size: 26px;
-      border-radius: 50%;
-      padding: 15px;
-      text-decoration: none;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.3);
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-      100% { transform: scale(1); }
-    }
-
-    /* FOOTER */
-    footer {
-      background: #111;
-      color: #ccc;
-      text-align: center;
-      padding: 25px 10px;
-      margin-top: 60px;
-    }
-
-    footer a {
-      color: #00ff99;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    @media (max-width: 768px) {
-      header h1 { font-size: 1.6rem; }
-      .slider { height: 55vh; }
-    }
   </style>
 </head>
 <body>
-
   <header>
-    <h1 data-lang="title">Marcos Rent Car - Punta Cana</h1>
-    <p data-lang="subtitle">Transporte VIP | Alquiler de Autos | Yates | Excursiones</p>
+    <div class="brand" aria-hidden="false">
+      <div class="logo">🚗 Marcos Rent Car</div>
+      <div class="tagline" data-i18n="tagline">Conduce el futuro del turismo • Punta Cana</div>
+    </div>
+
+    <div class="lang-wrap" aria-label="Language selector">
+      <!-- language selector with flags -->
+      <div class="lang-btn" id="langToggle" title="Cambiar idioma">
+        <img class="flag" id="currentFlag" src="https://flagcdn.com/w20/do.png" alt="flag">
+        <span id="currentLang" style="font-size:0.9rem">ES</span>
+      </div>
+      <div id="langMenu" style="display:none; position:absolute; right:18px; top:66px; background:rgba(0,0,0,0.6); padding:8px; border-radius:8px;">
+        <!-- options inserted by JS -->
+      </div>
+    </div>
   </header>
 
   <!-- SLIDER -->
-  <div class="slider">
-    <div class="slides">
-      <img src="https://images.unsplash.com/photo-1511910849309-0e2a1a4ab6b7?auto=format&fit=crop&w=1000&q=80" alt="Auto deportivo">
-      <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1000&q=80" alt="SUV">
-      <img src="https://images.unsplash.com/photo-1563720226047-18170b62a38f?auto=format&fit=crop&w=1000&q=80" alt="Yate">
-      <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1000&q=80" alt="Transporte VIP">
-      <img src="https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?auto=format&fit=crop&w=1000&q=80" alt="Excursión">
-      <img src="https://images.unsplash.com/photo-1581578017423-2952e6e7f82f?auto=format&fit=crop&w=1000&q=80" alt="Transporte de empresa">
+  <div class="slider" role="img" aria-label="Galería de vehículos y servicios">
+    <div class="slides" id="slidesTrack">
+      <!-- imágenes de ejemplo: autos, suv, yate, VIP, excursión, transporte empresarial -->
+      <img src="https://images.unsplash.com/photo-1511910849309-0e2a1a4ab6b7?auto=format&fit=crop&w=1600&q=80" alt="Auto deportivo">
+      <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1600&q=80" alt="SUV">
+      <img src="https://images.unsplash.com/photo-1563720226047-18170b62a38f?auto=format&fit=crop&w=1600&q=80" alt="Yate en el mar">
+      <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1600&q=80" alt="Transporte VIP">
+      <img src="https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?auto=format&fit=crop&w=1600&q=80" alt="Excursiones">
+      <img src="https://images.unsplash.com/photo-1581578017423-2952e6e7f82f?auto=format&fit=crop&w=1600&q=80" alt="Transporte empresarial">
+    </div>
+
+    <div class="overlay">
+      <div class="hero" role="banner">
+        <h2 data-i18n="heroTitle">Explora con Estilo — Conduce con Libertad</h2>
+        <p data-i18n="heroSubtitle">Renta autos, transporte VIP, yates y transporte de personal empresarial.</p>
+        <div class="cta">
+          <a class="btn" id="bookNowBtn" href="#reserva" data-i18n="bookNow">Reservar ahora</a>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- SERVICIOS -->
-  <section class="servicios">
-    <h2 data-lang="servicesTitle">Nuestros Servicios</h2>
-    <div class="grid-servicios">
-      <div class="servicio">
-        <img src="https://images.unsplash.com/photo-1493238792000-8113da705763?auto=format&fit=crop&w=800&q=80" alt="Rent Car">
-        <h3 data-lang="rentCarTitle">Alquiler de Autos</h3>
-        <p data-lang="rentCarText">Renta tu vehículo ideal: deportivo, SUV, familiar o de lujo con entrega a domicilio.</p>
+  <main>
+    <!-- Servicios 2x2 -->
+    <section class="services" aria-labelledby="services-title">
+      <h3 id="services-title" style="display:none">Servicios</h3>
+
+      <div class="services-grid" style="display:grid; grid-template-columns: 1fr;">
+        <div class="services" style="margin-bottom:12px">
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1493238792000-8113da705763?auto=format&fit=crop&w=800&q=80" alt="">
+            <div>
+              <h3 data-i18n="srv_rent">Alquiler de Autos</h3>
+              <p data-i18n="srv_rent_txt">Flota variada: deportivos, SUVs, familiares y autos premium. Entrega a aeropuerto y hotels.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1581578017423-2952e6e7f82f?auto=format&fit=crop&w=800&q=80" alt="">
+            <div>
+              <h3 data-i18n="srv_vip">Transporte VIP</h3>
+              <p data-i18n="srv_vip_txt">Choferes profesionales, puntualidad y vehículos de alta gama para eventos y viajes ejecutivos.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1563720226047-18170b62a38f?auto=format&fit=crop&w=800&q=80" alt="">
+            <div>
+              <h3 data-i18n="srv_yacht">Renta de Yates</h3>
+              <p data-i18n="srv_yacht_txt">Yates privados con tripulación para celebraciones, paseos y excursiones marinas exclusivas.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?auto=format&fit=crop&w=800&q=80" alt="">
+            <div>
+              <h3 data-i18n="srv_corp">Transporte Corporativo</h3>
+              <p data-i18n="srv_corp_txt">Soluciones de transporte de personal para empresas: rutas regulares, eventos y traslados masivos.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PANEL con formulario y contacto -->
+    <div class="panel" id="reserva">
+      <div class="left">
+        <div class="muted" style="margin-bottom:8px" data-i18n="reserveIntro">Rellena el formulario y elige enviar por WhatsApp o Email. Recibirás confirmación inmediata.</div>
+
+        <form id="bookingForm" autocomplete="on">
+          <div class="row">
+            <div class="col">
+              <label for="name" data-i18n="lbl_name">Nombre</label>
+              <input id="name" name="name" placeholder="" required>
+            </div>
+            <div class="col">
+              <label for="phone" data-i18n="lbl_phone">Teléfono</label>
+              <input id="phone" name="phone" placeholder="+1 809 000 0000" required>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <label for="email" data-i18n="lbl_email">Correo</label>
+              <input id="email" name="email" type="email" placeholder="tucorreo@ejemplo.com">
+            </div>
+            <div class="col">
+              <label for="service" data-i18n="lbl_service">Servicio</label>
+              <select id="service" name="service" required>
+                <option value="rent">Alquiler de Autos</option>
+                <option value="vip">Transporte VIP</option>
+                <option value="yacht">Renta de Yates</option>
+                <option value="corp">Transporte Corporativo</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <label for="pickup" data-i18n="lbl_pickup">Fecha/Hora (Inicio)</label>
+              <input id="pickup" name="pickup" type="datetime-local" required>
+            </div>
+            <div class="col">
+              <label for="return" data-i18n="lbl_return">Fecha/Hora (Fin)</label>
+              <input id="return" name="return" type="datetime-local">
+            </div>
+          </div>
+
+          <label for="message" data-i18n="lbl_message">Detalles / Comentarios</label>
+          <textarea id="message" name="message" placeholder="" ></textarea>
+
+          <div class="actions">
+            <button type="button" class="btn" id="sendWhatsapp" title="Enviar por WhatsApp">Enviar por WhatsApp</button>
+            <button type="button" class="btn" id="sendEmail" title="Enviar por Email">Enviar por Email</button>
+            <button type="reset" class="btn" style="background:transparent;color:var(--accent1);border:1px solid rgba(255,255,255,0.06)">Limpiar</button>
+          </div>
+        </form>
       </div>
 
-      <div class="servicio">
-        <img src="https://images.unsplash.com/photo-1581578017423-2952e6e7f82f?auto=format&fit=crop&w=800&q=80" alt="Transporte VIP">
-        <h3 data-lang="vipTitle">Transporte VIP</h3>
-        <p data-lang="vipText">Vive la experiencia de viajar con clase, puntualidad y comodidad premium.</p>
-      </div>
+      <aside class="right">
+        <h4 data-i18n="contactTitle">Contacto Rápido</h4>
+        <p class="muted" data-i18n="contactPhoneLabel">WhatsApp:</p>
+        <p><strong id="contactPhone">+1 809 393 7692</strong></p>
+        <p class="muted" data-i18n="contactEmailLabel">Email:</p>
+        <p><strong id="contactEmail">marcobastardo958@gmail.com</strong></p>
 
-      <div class="servicio">
-        <img src="https://images.unsplash.com/photo-1563720226047-18170b62a38f?auto=format&fit=crop&w=800&q=80" alt="Yate">
-        <h3 data-lang="yachtTitle">Renta de Yates</h3>
-        <p data-lang="yachtText">Disfruta del mar con estilo en nuestros yates privados con tripulación incluida.</p>
-      </div>
+        <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap">
+          <a id="waQuick" class="btn" href="https://wa.me/18094078708" target="_blank">💬 WhatsApp</a>
+          <a id="mailQuick" class="btn" href="mailto:marcobastardo958@gmail.com">📧 Email</a>
+        </div>
 
-      <div class="servicio">
-        <img src="https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?auto=format&fit=crop&w=800&q=80" alt="Excursiones">
-        <h3 data-lang="excursionsTitle">Excursiones & Transporte Empresarial</h3>
-        <p data-lang="excursionsText">Organizamos excursiones y transporte de personal para empresas con tarifas preferenciales.</p>
-      </div>
+        <div style="margin-top:14px; font-size:0.9rem; color:rgba(255,255,255,0.65)">
+          <strong data-i18n="noteTitle">Nota:</strong>
+          <div data-i18n="noteText">Confirmamos disponibilidad en menos de 30 minutos. Para reservas urgentes usa WhatsApp.</div>
+        </div>
+      </aside>
     </div>
-  </section>
+  </main>
+
+  <button class="whatsapp" id="floatingWA" title="Abrir WhatsApp">💬</button>
 
   <footer>
-    <p data-lang="footerText">© 2025 Marcos Rent Car - Punta Cana | <a href="https://wa.me/18094078708" target="_blank">Contáctanos por WhatsApp</a></p>
+    <div>© 2025 Marcos Rent Car • Punta Cana</div>
+    <div style="margin-top:8px; font-size:0.9rem; color:rgba(255,255,255,0.5)">Diseño moderno • Multilenguaje • Reservas rápidas</div>
   </footer>
 
-  <!-- BOTÓN WHATSAPP -->
-  <a href="https://wa.me/18094078708" class="whatsapp" target="_blank">💬</a>
-
-  <!-- SCRIPT DE TRADUCCIÓN AUTOMÁTICA -->
   <script>
-    const translations = {
+    /***********************
+     * Configuración rápida
+     ***********************/
+    const CONFIG = {
+      whatsappNumber: "18094078708", // sin +, ejemplo: 18094078708
+      email: "marcobastardo958@gmail.com",
+      defaultLang: "es", // fallback
+      supportedLangs: ["es","en","fr","pt","it","ru"]
+    };
+
+    /* Traducciones (claves usadas en data-i18n y placeholders) */
+    const I18N = {
+      es: {
+        tagline: "Conduce el futuro del turismo • Punta Cana",
+        heroTitle: "Explora con Estilo — Conduce con Libertad",
+        heroSubtitle: "Renta autos, transporte VIP, yates y transporte de personal empresarial.",
+        bookNow: "Reservar ahora",
+        reserveIntro: "Rellena el formulario y elige enviar por WhatsApp o Email. Recibirás confirmación inmediata.",
+        lbl_name: "Nombre",
+        lbl_phone: "Teléfono",
+        lbl_email: "Correo",
+        lbl_service: "Servicio",
+        lbl_pickup: "Fecha/Hora (Inicio)",
+        lbl_return: "Fecha/Hora (Fin)",
+        lbl_message: "Detalles / Comentarios",
+        contactTitle: "Contacto Rápido",
+        contactPhoneLabel: "WhatsApp:",
+        contactEmailLabel: "Email:",
+        noteTitle: "Nota:",
+        noteText: "Confirmamos disponibilidad en menos de 30 minutos. Para reservas urgentes usa WhatsApp.",
+        srv_rent: "Alquiler de Autos",
+        srv_rent_txt: "Flota variada: deportivos, SUVs, familiares y autos premium. Entrega a aeropuerto y hotels.",
+        srv_vip: "Transporte VIP",
+        srv_vip_txt: "Choferes profesionales, puntualidad y vehículos de alta gama.",
+        srv_yacht: "Renta de Yates",
+        srv_yacht_txt: "Yates privados con tripulación para celebraciones y paseos.",
+        srv_corp: "Transporte Corporativo",
+        srv_corp_txt: "Transporte de personal, eventos y rutas empresariales."
+      },
       en: {
-        title: "Marcos Rent Car - Punta Cana",
-        subtitle: "VIP Transport | Car Rental | Yachts | Excursions",
-        servicesTitle: "Our Services",
-        rentCarTitle: "Car Rental",
-        rentCarText: "Rent your ideal vehicle: sports, SUV, family or luxury with home delivery.",
-        vipTitle: "VIP Transport",
-        vipText: "Experience premium travel with comfort, punctuality and elegance.",
-        yachtTitle: "Yacht Rental",
-        yachtText: "Enjoy the sea in style aboard our private yachts with full crew.",
-        excursionsTitle: "Excursions & Corporate Transport",
-        excursionsText: "We organize tours and corporate transport with special business rates.",
-        footerText: "© 2025 Marcos Rent Car - Punta Cana | Contact us on WhatsApp"
+        tagline: "Drive the future of tourism • Punta Cana",
+        heroTitle: "Explore in Style — Drive with Freedom",
+        heroSubtitle: "Car rental, VIP transport, yachts and corporate staff transport.",
+        bookNow: "Book now",
+        reserveIntro: "Fill the form and choose to send via WhatsApp or Email. We will confirm availability fast.",
+        lbl_name: "Full name",
+        lbl_phone: "Phone",
+        lbl_email: "Email",
+        lbl_service: "Service",
+        lbl_pickup: "Date/Time (Start)",
+        lbl_return: "Date/Time (End)",
+        lbl_message: "Details / Comments",
+        contactTitle: "Quick Contact",
+        contactPhoneLabel: "WhatsApp:",
+        contactEmailLabel: "Email:",
+        noteTitle: "Note:",
+        noteText: "We confirm availability within 30 minutes. For urgent bookings use WhatsApp.",
+        srv_rent: "Car Rental",
+        srv_rent_txt: "Wide fleet: sports, SUVs, family and premium cars. Airport delivery available.",
+        srv_vip: "VIP Transport",
+        srv_vip_txt: "Professional drivers, punctuality and luxury vehicles.",
+        srv_yacht: "Yacht Rental",
+        srv_yacht_txt: "Private yachts with crew for events and cruises.",
+        srv_corp: "Corporate Transport",
+        srv_corp_txt: "Staff transport, events and corporate shuttle solutions."
       },
       fr: {
-        title: "Marcos Rent Car - Punta Cana",
-        subtitle: "Transport VIP | Location de Voitures | Yachts | Excursions",
-        servicesTitle: "Nos Services",
-        rentCarTitle: "Location de Voitures",
-        rentCarText: "Louez votre voiture idéale : sportive, SUV, familiale ou de luxe, livrée à domicile.",
-        vipTitle: "Transport VIP",
-        vipText: "Voyagez avec style, confort et ponctualité.",
-        yachtTitle: "Location de Yachts",
-        yachtText: "Profitez de la mer à bord de nos yachts privés avec équipage.",
-        excursionsTitle: "Excursions & Transport d’Entreprise",
-        excursionsText: "Nous organisons des excursions et le transport du personnel pour les entreprises.",
-        footerText: "© 2025 Marcos Rent Car - Punta Cana | Contactez-nous sur WhatsApp"
+        tagline: "Conduisez le futur du tourisme • Punta Cana",
+        heroTitle: "Explorez avec style — Conduisez en toute liberté",
+        heroSubtitle: "Location de voitures, transport VIP, yachts et transport de personnel d'entreprise.",
+        bookNow: "Réserver",
+        reserveIntro: "Remplissez le formulaire et choisissez d'envoyer via WhatsApp ou Email. Nous confirmerons rapidement.",
+        lbl_name: "Nom complet",
+        lbl_phone: "Téléphone",
+        lbl_email: "Email",
+        lbl_service: "Service",
+        lbl_pickup: "Date/Heure (Début)",
+        lbl_return: "Date/Heure (Fin)",
+        lbl_message: "Détails / Commentaires",
+        contactTitle: "Contact Rapide",
+        contactPhoneLabel: "WhatsApp:",
+        contactEmailLabel: "Email:",
+        noteTitle: "Note:",
+        noteText: "Nous confirmons la disponibilité en moins de 30 minutes. Pour réservations urgentes, utilisez WhatsApp.",
+        srv_rent: "Location de Voitures",
+        srv_rent_txt: "Flotte variée : sportives, SUV, familiales et voitures premium.",
+        srv_vip: "Transport VIP",
+        srv_vip_txt: "Chauffeurs professionnels, ponctualité et véhicules haut de gamme.",
+        srv_yacht: "Location de Yachts",
+        srv_yacht_txt: "Yachts privés avec équipage pour événements et promenades.",
+        srv_corp: "Transport d'Entreprise",
+        srv_corp_txt: "Transport du personnel, événements et solutions d'navettes."
       },
       pt: {
-        title: "Marcos Rent Car - Punta Cana",
-        subtitle: "Transporte VIP | Aluguel de Carros | Iates | Excursões",
-        servicesTitle: "Nossos Serviços",
-        rentCarTitle: "Aluguel de Carros",
-        rentCarText: "Alugue o carro ideal: esportivo, SUV, familiar ou de luxo com entrega em domicílio.",
-        vipTitle: "Transporte VIP",
-        vipText: "Viaje com conforto, pontualidade e estilo premium.",
-        yachtTitle: "Aluguel de Iates",
-        yachtText: "Desfrute do mar com estilo em nossos iates privados com tripulação.",
-        excursionsTitle: "Excursões & Transporte Corporativo",
-        excursionsText: "Organizamos excursões e transporte de pessoal corporativo com tarifas especiais.",
-        footerText: "© 2025 Marcos Rent Car - Punta Cana | Contate-nos no WhatsApp"
+        tagline: "Dirija o futuro do turismo • Punta Cana",
+        heroTitle: "Explore com estilo — Dirija com liberdade",
+        heroSubtitle: "Aluguel de carros, transporte VIP, iates e transporte de pessoal corporativo.",
+        bookNow: "Reservar agora",
+        reserveIntro: "Preencha o formulário e escolha enviar via WhatsApp ou Email. Confirmamos rápido.",
+        lbl_name: "Nome completo",
+        lbl_phone: "Telefone",
+        lbl_email: "Email",
+        lbl_service: "Serviço",
+        lbl_pickup: "Data/Hora (Início)",
+        lbl_return: "Data/Hora (Término)",
+        lbl_message: "Detalhes / Comentários",
+        contactTitle: "Contato Rápido",
+        contactPhoneLabel: "WhatsApp:",
+        contactEmailLabel: "Email:",
+        noteTitle: "Observação:",
+        noteText: "Confirmamos disponibilidade em até 30 minutos. Para reservas urgentes use WhatsApp.",
+        srv_rent: "Aluguel de Carros",
+        srv_rent_txt: "Frota variada: esportivos, SUVs, familiares e premium.",
+        srv_vip: "Transporte VIP",
+        srv_vip_txt: "Motoristas profissionais, pontualidade e veículos de alto padrão.",
+        srv_yacht: "Aluguel de Iates",
+        srv_yacht_txt: "Iates privados com tripulação para eventos e passeios.",
+        srv_corp: "Transporte Corporativo",
+        srv_corp_txt: "Transporte de funcionários, eventos e rotas empresariais."
       },
       it: {
-        title: "Marcos Rent Car - Punta Cana",
-        subtitle: "Trasporto VIP | Noleggio Auto | Yacht | Escursioni",
-        servicesTitle: "I Nostri Servizi",
-        rentCarTitle: "Noleggio Auto",
-        rentCarText: "Noleggia l'auto ideale: sportiva, SUV, familiare o di lusso, consegna a domicilio.",
-        vipTitle: "Trasporto VIP",
-        vipText: "Viaggia con comfort, puntualità e stile esclusivo.",
-        yachtTitle: "Noleggio Yacht",
-        yachtText: "Goditi il mare a bordo dei nostri yacht privati con equipaggio completo.",
-        excursionsTitle: "Escursioni & Trasporto Aziendale",
-        excursionsText: "Organizziamo escursioni e trasporto aziendale con tariffe speciali.",
-        footerText: "© 2025 Marcos Rent Car - Punta Cana | Contattaci su WhatsApp"
+        tagline: "Guida il futuro del turismo • Punta Cana",
+        heroTitle: "Esplora con stile — Guida con libertà",
+        heroSubtitle: "Noleggio auto, trasporto VIP, yacht e trasporto del personale aziendale.",
+        bookNow: "Prenota ora",
+        reserveIntro: "Compila il modulo e scegli di inviare via WhatsApp o Email. Confermiamo rapidamente.",
+        lbl_name: "Nome completo",
+        lbl_phone: "Telefono",
+        lbl_email: "Email",
+        lbl_service: "Servizio",
+        lbl_pickup: "Data/Ora (Inizio)",
+        lbl_return: "Data/Ora (Fine)",
+        lbl_message: "Dettagli / Commenti",
+        contactTitle: "Contatto Rapido",
+        contactPhoneLabel: "WhatsApp:",
+        contactEmailLabel: "Email:",
+        noteTitle: "Nota:",
+        noteText: "Confermiamo la disponibilità in meno di 30 minuti. Per prenotazioni urgenti usa WhatsApp.",
+        srv_rent: "Noleggio Auto",
+        srv_rent_txt: "Flotta varia: sportive, SUV, familiari e di lusso.",
+        srv_vip: "Trasporto VIP",
+        srv_vip_txt: "Autisti professionali, puntualità e veicoli premium.",
+        srv_yacht: "Noleggio Yacht",
+        srv_yacht_txt: "Yacht privati con equipaggio per eventi e crociere.",
+        srv_corp: "Trasporto Aziendale",
+        srv_corp_txt: "Trasporto del personale, eventi e navette aziendali."
       },
       ru: {
-        title: "Marcos Rent Car - Пунта-Кана",
-        subtitle: "VIP Транспорт | Аренда Авто | Яхты | Экскурсии",
-        servicesTitle: "Наши Услуги",
-        rentCarTitle: "Аренда Автомобилей",
-        rentCarText: "Арендуйте идеальный автомобиль: спортивный, SUV, семейный или люксовый.",
-        vipTitle: "VIP Транспорт",
-        vipText: "Путешествуйте с комфортом, пунктуальностью и стилем.",
-        yachtTitle: "Аренда Яхт",
-        yachtText: "Наслаждайтесь морем на наших частных яхтах с экипажем.",
-        excursionsTitle: "Экскурсии и Корпоративный Транспорт",
-        excursionsText: "Организуем экскурсии и транспорт для сотрудников компаний.",
-        footerText: "© 2025 Marcos Rent Car - Пунта-Кана | Свяжитесь с нами в WhatsApp"
+        tagline: "Веди будущее туризма • Пунта-Кана",
+        heroTitle: "Путешествуйте стильно — Водите с свободой",
+        heroSubtitle: "Аренда авто, VIP транспорт, яхты и перевозка персонала для компаний.",
+        bookNow: "Бронировать",
+        reserveIntro: "Заполните форму и отправьте через WhatsApp или Email. Мы подтвердим быстро.",
+        lbl_name: "Полное имя",
+        lbl_phone: "Телефон",
+        lbl_email: "Email",
+        lbl_service: "Услуга",
+        lbl_pickup: "Дата/Время (Начало)",
+        lbl_return: "Дата/Время (Конец)",
+        lbl_message: "Детали / Комментарии",
+        contactTitle: "Быстрый контакт",
+        contactPhoneLabel: "WhatsApp:",
+        contactEmailLabel: "Email:",
+        noteTitle: "Примечание:",
+        noteText: "Подтверждаем доступность в течение 30 минут. Для срочных заказов используйте WhatsApp.",
+        srv_rent: "Аренда Авто",
+        srv_rent_txt: "Широкий парк: спорткары, SUV, семейные и премиум автомобили.",
+        srv_vip: "VIP Транспорт",
+        srv_vip_txt: "Профессиональные водители, пунктуальность и элитные автомобили.",
+        srv_yacht: "Аренда Яхт",
+        srv_yacht_txt: "Частные яхты с экипажем для мероприятий и прогулок.",
+        srv_corp: "Корпоративный Транспорт",
+        srv_corp_txt: "Перевозка персонала, мероприятия и корпоративные маршруты."
       }
     };
 
-    const userLang = navigator.language.slice(0, 2);
-    const selectedLang = translations[userLang] ? userLang : "es";
-    document.querySelectorAll("[data-lang]").forEach(el => {
-      const key = el.getAttribute("data-lang");
-      if (translations[selectedLang][key]) el.innerText = translations[selectedLang][key];
+    /* Helper: set translations into DOM */
+    function applyTranslations(lang){
+      const dict = I18N[lang] || I18N[CONFIG.defaultLang];
+      document.querySelectorAll('[data-i18n]').forEach(el=>{
+        const key = el.getAttribute('data-i18n');
+        if(dict[key]) el.innerText = dict[key];
+      });
+      // placeholders
+      document.getElementById('name').placeholder = dict.lbl_name || '';
+      document.getElementById('phone').placeholder = dict.lbl_phone || '';
+      document.getElementById('email').placeholder = dict.lbl_email || '';
+      document.getElementById('message').placeholder = dict.lbl_message || '';
+      // contact quick
+      document.getElementById('contactPhone').innerText = "+1 (809) 393-7692";
+      document.getElementById('contactEmail').innerText = CONFIG.email;
+      // update current lang label & flag
+      document.getElementById('currentLang').innerText = (lang||'es').toUpperCase();
+      const flagMap = {es:'do',en:'us',fr:'fr',pt:'br',it:'it',ru:'ru'};
+      const cc = flagMap[lang] || 'do';
+      document.getElementById('currentFlag').src = 'https://flagcdn.com/w20/' + cc + '.png';
+    }
+
+    /* Detect browser language */
+    const browserLang = navigator.language ? navigator.language.slice(0,2) : CONFIG.defaultLang;
+    const initialLang = CONFIG.supportedLangs.includes(browserLang) ? browserLang : CONFIG.defaultLang;
+    applyTranslations(initialLang);
+
+    /* Language menu */
+    const langToggle = document.getElementById('langToggle');
+    const langMenu = document.getElementById('langMenu');
+    const supported = CONFIG.supportedLangs;
+    function buildLangMenu(){
+      langMenu.innerHTML = '';
+      supported.forEach(l=>{
+        const flagMap = {es:'do',en:'us',fr:'fr',pt:'br',it:'it',ru:'ru'};
+        const cc = flagMap[l] || 'do';
+        const el = document.createElement('div');
+        el.style.padding='6px'; el.style.cursor='pointer'; el.style.display='flex'; el.style.alignItems='center'; el.style.gap='8px';
+        el.innerHTML = `<img src="https://flagcdn.com/w20/${cc}.png" style="width:26px;height:18px;border-radius:3px"><strong style="font-size:0.95rem">${l.toUpperCase()}</strong>`;
+        el.onclick = ()=>{
+          langMenu.style.display='none';
+          applyTranslations(l);
+        };
+        langMenu.appendChild(el);
+      });
+    }
+    buildLangMenu();
+
+    langToggle.addEventListener('click', (e)=>{
+      e.stopPropagation();
+      langMenu.style.display = langMenu.style.display === 'none' ? 'block' : 'none';
     });
+    document.addEventListener('click', ()=> langMenu.style.display='none');
+
+    /* Form behavior: build message and open WhatsApp or Mailto */
+    const bookingForm = document.getElementById('bookingForm');
+    const sendWhatsapp = document.getElementById('sendWhatsapp');
+    const sendEmail = document.getElementById('sendEmail');
+
+    function getServiceLabel(val, lang){
+      const map = {
+        rent: I18N[lang].srv_rent || 'Rent',
+        vip: I18N[lang].srv_vip || 'VIP',
+        yacht: I18N[lang].srv_yacht || 'Yacht',
+        corp: I18N[lang].srv_corp || 'Corporate'
+      };
+      return map[val] || val;
+    }
+
+    function collectFormData(){
+      return {
+        name: document.getElementById('name').value.trim(),
+        phone: document.getElementById('phone').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        service: document.getElementById('service').value,
+        pickup: document.getElementById('pickup').value,
+        ret: document.getElementById('return').value,
+        message: document.getElementById('message').value.trim()
+      }
+    }
+
+    function validate(data){
+      if(!data.name || !data.phone || !data.pickup) return false;
+      return true;
+    }
+
+    function formatDateTime(dt){
+      if(!dt) return '';
+      // basic friendly formatting: YYYY-MM-DD HH:MM
+      return dt.replace('T',' ');
+    }
+
+    sendWhatsapp.addEventListener('click', ()=>{
+      const lang = document.getElementById('currentLang').innerText.toLowerCase();
+      const data = collectFormData();
+      if(!validate(data)){ alert( I18N[lang].noteText || "Por favor completa los campos obligatorios (Nombre, Teléfono, Fecha/Hora inicio)." ); return; }
+
+      const svcLabel = getServiceLabel(data.service, lang);
+      const bodyLines = [
+        `*Reserva / Booking*`,
+        `*Servicio:* ${svcLabel}`,
+        `*Nombre:* ${data.name}`,
+        `*Teléfono:* ${data.phone}`,
+        data.email ? `*Email:* ${data.email}` : '',
+        data.pickup ? `*Inicio:* ${formatDateTime(data.pickup)}` : '',
+        data.ret ? `*Fin:* ${formatDateTime(data.ret)}` : '',
+        data.message ? `*Detalles:* ${data.message}` : ''
+      ].filter(Boolean).join('%0A');
+
+      const url = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(bodyLines)}`;
+      window.open(url,'_blank');
+    });
+
+    sendEmail.addEventListener('click', ()=>{
+      const lang = document.getElementById('currentLang').innerText.toLowerCase();
+      const data = collectFormData();
+      if(!validate(data)){ alert( I18N[lang].noteText || "Por favor completa los campos obligatorios (Nombre, Teléfono, Fecha/Hora inicio)." ); return; }
+
+      const svcLabel = getServiceLabel(data.service, lang);
+      const subject = encodeURIComponent(`[Reserva] ${svcLabel} - ${data.name}`);
+      const body = [
+        `Servicio: ${svcLabel}`,
+        `Nombre: ${data.name}`,
+        `Teléfono: ${data.phone}`,
+        data.email ? `Email: ${data.email}` : '',
+        data.pickup ? `Inicio: ${formatDateTime(data.pickup)}` : '',
+        data.ret ? `Fin: ${formatDateTime(data.ret)}` : '',
+        data.message ? `Detalles: ${data.message}` : ''
+      ].filter(Boolean).join('\n');
+      const mailto = `mailto:${CONFIG.email}?subject=${subject}&body=${encodeURIComponent(body)}`;
+      window.location.href = mailto;
+    });
+
+    /* Floating WhatsApp */
+    document.getElementById('floatingWA').addEventListener('click', ()=>{
+      window.open(`https://wa.me/${CONFIG.whatsappNumber}`,'_blank');
+    });
+
+    /* Quick contact buttons sync */
+    document.getElementById('waQuick').href = `https://wa.me/${CONFIG.whatsappNumber}`;
+    document.getElementById('mailQuick').href = `mailto:${CONFIG.email}`;
+
+    /* Small enhancement: focus first field on load */
+    window.addEventListener('load', ()=> {
+      setTimeout(()=> document.getElementById('name').focus(),300);
+    });
+
   </script>
 </body>
 </html>
