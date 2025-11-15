@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Marcos Rent Car - Transporte VIP en Punta Cana</title>
+<meta name="description" content="Marcos Rent Car: Taxi, transporte privado, tours VIP, alquiler de yates y rent a car en Punta Cana. Disponibilidad en toda la isla.">
+<meta name="keywords" content="rent car punta cana, taxi punta cana, yates punta cana, excursiones vip, transporte privado, airport transfer punta cana">
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
+<style>
+:root{--accent:#00d4d4;--accent-2:#6ee7b7;--bg-1:#030417}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;font-family:Inter,system-ui,Arial,sans-serif;background:var(--bg-1);color:#e6f7f7}
+a{color:inherit;text-decoration:none}
+.container{max-width:1200px;margin:0 auto;padding:20px}
+header{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
+.logo img{width:56px;height:56px;border-radius:10px;object-fit:cover}
+nav{display:flex;gap:12px;align-items:center}
+
+/* Background animated layers */
+.bg-layer{position:fixed;inset:0;z-index:-4;overflow:hidden}
+.bg-gradient{position:absolute;inset:0;background:radial-gradient(circle at 10% 20%, rgba(0,212,212,0.06), transparent 15%),radial-gradient(circle at 90% 80%, rgba(110,231,183,0.04), transparent 20%),linear-gradient(140deg,#021025 0%, #041328 60%, #07112a 100%);filter:blur(6px);transform:scale(1.05)}
+.bg-grid{position:absolute;inset:0;background-image:repeating-linear-gradient(0deg, rgba(255,255,255,0.02) 0 1px, transparent 1px 80px),repeating-linear-gradient(90deg, rgba(255,255,255,0.02) 0 1px, transparent 1px 80px);opacity:.12;mix-blend-mode:overlay;animation:moveGrid 18s linear infinite}
+@keyframes moveGrid{from{background-position:0 0}to{background-position:0 200px}}
+.bg-particles{position:absolute;inset:0;pointer-events:none;opacity:.45}
+.particle{position:absolute;width:2px;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:50%;filter:blur(.4px);opacity:.7}
+
+/* Layout */
+.btn{background:linear-gradient(90deg,var(--accent),var(--accent-2));border:none;padding:12px 18px;border-radius:12px;color:#012;cursor:pointer;font-weight:700;transition:transform .25s,box-shadow .25s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 0 18px rgba(0,212,212,0.55),0 0 30px rgba(110,231,183,0.35)}
+.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,.08);color:#e6f7f7}
+.hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:start;padding-top:8px}
+@media(max-width:980px){.hero{grid-template-columns:1fr}}
+.card{background:linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.02));backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.04);padding:20px;border-radius:14px;box-shadow:0 10px 40px rgba(0,0,0,0.6);transition:box-shadow .3s}
+.card:hover{box-shadow:0 0 28px rgba(0,212,212,0.35),0 0 55px rgba(110,231,183,0.25)}
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
+@media(max-width:900px){.services{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.services{grid-template-columns:1fr}}
+.service{padding:14px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03);transition:.3s;box-shadow:0 0 0 rgba(0,212,212,0.0)}
+.service:hover{box-shadow:0 0 22px rgba(0,212,212,0.55),0 0 45px rgba(110,231,183,0.45);transform:translateY(-4px)}
+
+/* Floating WhatsApp */
+.whatsapp{position:fixed;right:18px;bottom:18px;background:linear-gradient(90deg,#25D366,#00b894);padding:12px;border-radius:50px;box-shadow:0 10px 30px rgba(0,0,0,0.5);display:flex;gap:10px;align-items:center;color:#fff;z-index:60}
+.whatsapp svg{display:block}
+
+/* Payment logos floating + glow pulse */
+@keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-12px)}100%{transform:translateY(0)}}
+@keyframes glowPulse{0%{filter:drop-shadow(0 0 0 rgba(0,255,255,0))}50%{filter:drop-shadow(0 0 12px rgba(0,255,255,0.7))}100%{filter:drop-shadow(0 0 0 rgba(0,255,255,0))}}
+.floating-logo{animation:float 3s ease-in-out infinite;transition:transform .25s}
+.floating-logo:hover{transform:scale(1.15);animation:glowPulse 1.6s ease-in-out infinite}
+
+/* Popup: offer with halo, particles and gold rain */
+.offer-popup{position:fixed;left:50%;top:18%;transform:translateX(-50%);display:none;z-index:120}
+.offer-inner{position:relative;padding:18px;border-radius:12px;background:#fff;color:#000;max-width:460px;border:3px solid #e3c46f;box-shadow:0 0 20px rgba(255,215,0,0.6);overflow:visible}
+.halo{position:absolute;top:50%;left:50%;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(255,215,0,0.35) 0%,rgba(255,215,0,0.18) 40%,transparent 70%);transform:translate(-50%,-50%);filter:blur(18px);animation:haloPulse 3s ease-in-out infinite;z-index:1}
+@keyframes haloPulse{0%{transform:translate(-50%,-50%) scale(1);opacity:.9}50%{transform:translate(-50%,-50%) scale(1.12);opacity:1}100%{transform:translate(-50%,-50%) scale(1);opacity:.9}}
+.particles-gold{position:absolute;top:-70px;left:-70px;right:-70px;bottom:-70px;pointer-events:none;z-index:5}
+.particles-gold .p{position:absolute;border-radius:50%;background:radial-gradient(circle,#ffd700 0%,#e3b100 60%,transparent 100%);opacity:0;animation:sparkle 3s infinite ease-in-out}
+@keyframes sparkle{0%{transform:translate(0,0) scale(.7);opacity:0}40%{transform:translate(25px,-25px) scale(1.4);opacity:1}100%{transform:translate(-20px,30px) scale(.8);opacity:0}}
+.gold-rain{position:absolute;top:-80px;left:0;width:100%;height:180px;pointer-events:none;z-index:6}
+.gold-rain .drop{position:absolute;width:4px;height:18px;background:linear-gradient(to bottom,#ffe88b,#c9a000);border-radius:2px;opacity:0;filter:blur(.4px);animation:goldRain 1.8s infinite linear}
+@keyframes goldRain{0%{transform:translateY(0);opacity:0}20%{opacity:1}100%{transform:translateY(160px);opacity:0}}
+
+/* Fade-in for popup */
+.fade-in{opacity:0;transform:translateY(20px);animation:fadeInUp 1s ease forwards}
+@keyframes fadeInUp{to{opacity:1;transform:translateY(0)}}
+
+/* Payment section on page */
+#payment-methods{padding:60px 0;text-align:center}
+#payment-methods h2{color:#fff;margin-bottom:30px;font-size:28px}
+.payment-logos{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:30px}
+.payment-logos img{height:60px}
+
+/* Offer button inside popup */
+.offer-cta{display:flex;gap:10px;justify-content:center;margin-top:12px}
+.offer-cta .btn{padding:12px 18px}
+
+/* small responsive tweaks */
+@media(max-width:520px){.hero{grid-template-columns:1fr}.offer-inner{max-width:90vw}}
+</style>
+</head>
+<body>
+
+<div class="bg-layer">
+  <div class="bg-gradient"></div>
+  <div class="bg-grid"></div>
+  <div class="bg-particles" id="bgParticles"></div>
+</div>
+
+<div class="container">
+<header>
+  <div style="display:flex;gap:12px;align-items:center">
+    <img class="logo" src="https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=120" alt="logo" style="width:56px;height:56px;border-radius:10px;object-fit:cover">
+    <div>
+      <strong style="font-size:1.2rem">Marcos Rent Car</strong><br><small>Transporte VIP · Punta Cana</small>
+    </div>
+  </div>
+  <nav>
+    <a href="#services" style="margin-right:12px">Servicios</a>
+    <a href="#contact">Contacto</a>
+  </nav>
+</header>
+
+<main>
+<section class="hero">
+  <div>
+    <h1 id="heroTitle">Transporte VIP y Excursiones en Punta Cana</h1>
+    <p id="heroSub">Taxi, transporte privado, excursiones VIP, alquiler de yates y rent car. Cobertura en toda la isla. Servicio 24/7 — reserva fácil y segura.</p>
+    <div style="display:flex;gap:12px;margin-top:14px">
+      <button class="btn" id="ctaReserve">Reservar ahora</button>
+      <button class="btn ghost" id="ctaServices">Ver servicios</button>
+    </div>
+
+    <div id="services" class="services" style="margin-top:28px">
+      <div class="service"><h4>Taxi Aeroportuario</h4><p class="small">Traslados puntuales 24/7</p></div>
+      <div class="service"><h4>Transporte Privado</h4><p class="small">Choferes profesionales</p></div>
+      <div class="service"><h4>Transporte Empresarial</h4><p class="small">Cuentas corporativas y facturación disponible</p></div>
+      <div class="service"><h4>Rent Car</h4><p class="small">Flota moderna y mantenimiento garantizado</p></div>
+      <div class="service"><h4>Alquiler de Yates</h4><p class="small">Yates y catamaranes para eventos privados</p></div>
+      <div class="service"><h4>Excursiones VIP</h4><p class="small">Saona, buggies, party boats y tours exclusivos</p></div>
+    </div>
+
+    <!-- Payment logos (floating + hover glow) -->
+    <section id="payment-methods">
+      <h2>Métodos de Pago Aceptados</h2>
+      <div class="payment-logos">
+        <img class="floating-logo" src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" alt="Visa">
+        <img class="floating-logo" src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard">
+        <img class="floating-logo" src="https://upload.wikimedia.org/wikipedia/commons/3/30/American_Express_logo.svg" alt="American Express">
+        <img class="floating-logo" src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple Pay" style="filter:invert(1)">
+        <img class="floating-logo" src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Western_Union_logo.svg" alt="Western Union">
+        <img class="floating-logo" src="https://upload.wikimedia.org/wikipedia/commons/7/70/Cash_App_Logo.svg" alt="Cash App">
+        <img class="floating-logo" src="https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg" alt="Bitcoin">
+        <img class="floating-logo" src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Tether_Logo.svg" alt="USDT">
+      </div>
+    </section>
+
+  </div>
+
+  <aside class="card" aria-labelledby="cardTitle">
+    <h3 id="cardTitle">Reserva rápida</h3>
+    <form id="reservationForm">
+      <div class="field"><label for="name">Nombre completo</label><input id="name" name="name" type="text" required placeholder="Ej: Pedro Astacio"></div>
+      <div class="field"><label for="phone">Número de teléfono</label><input id="phone" name="phone" type="tel" required placeholder="+1 809 393 7692" pattern="[0-9+\-() ]{7,}" title="Incluya código de país si aplica"></div>
+      <div class="field"><label for="email">Correo electrónico</label><input id="email" name="email" type="email" required placeholder="tu@correo.com"></div>
+      <div class="row" style="display:flex;gap:8px">
+        <div class="field" style="flex:1"><label for="start">Fecha inicio</label><input id="start" name="start" type="date" required></div>
+        <div class="field" style="flex:1"><label for="end">Fecha entrega</label><input id="end" name="end" type="date" required></div>
+      </div>
+      <div class="field"><label for="service">Tipo de servicio</label>
+        <select id="service" name="service" required>
+          <option value="taxi">Taxi</option>
+          <option value="private">Transporte privado</option>
+          <option value="corporate">Transporte empresarial</option>
+          <option value="tours">Tours y excursiones</option>
+          <option value="yacht">Alquiler de yates</option>
+          <option value="rentcar">Rent Car</option>
+        </select>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;margin-top:8px">
+        <button class="btn" type="button" id="submitBtn">Enviar reserva</button>
+        <button type="button" class="btn ghost" id="waQuick">Reservar por WhatsApp</button>
+      </div>
+      <div style="margin-top:10px;font-size:.85rem;color:rgba(230,247,247,0.7)"><strong class="small">24/7</strong> · Cobertura en toda la isla</div>
+      <div style="margin-top:12px;font-size:.83rem;color:rgba(230,247,247,0.65)">Pagos aceptados: Efectivo · Zelle · Paypal · Western Union · Cash App · MasterCard · Visa · Apple Pay · American Express · BTC · USDT</div>
+    </form>
+  </aside>
+</section>
+
+<!-- Offer popup (option D) -->
+<div id="offerPopup" class="offer-popup">
+  <div class="offer-inner fade-in" role="dialog" aria-modal="true" aria-labelledby="offerTitle">
+    <div class="halo" aria-hidden="true"></div>
+    <div class="particles-gold" aria-hidden="true">
+      <div class="p p1"></div>
+      <div class="p p2"></div>
+      <div class="p p3"></div>
+      <div class="p p4"></div>
+      <div class="p p5"></div>
+      <div class="p p6"></div>
+      <div class="p p7"></div>
+      <div class="p p8"></div>
+      <div class="p p9"></div>
+      <div class="p p10"></div>
+    </div>
+    <div class="gold-rain" aria-hidden="true">
+      <span class="drop d1"></span>
+      <span class="drop d2"></span>
+      <span class="drop d3"></span>
+      <span class="drop d4"></span>
+      <span class="drop d5"></span>
+      <span class="drop d6"></span>
+      <span class="drop d7"></span>
+      <span class="drop d8"></span>
+      <span class="drop d9"></span>
+      <span class="drop d10"></span>
+    </div>
+
+    <h2 id="offerTitle" style="margin:0 0 8px 0;text-align:center">OFERTA EXCLUSIVA</h2>
+    <p style="text-align:center;margin:0 0 12px 0">Reserva ahora y obtén <strong>5% de descuento</strong> en tu primera excursión VIP.</p>
+    <div class="offer-cta">
+      <button class="btn" id="claimOffer">Reclamar ahora</button>
+      <button class="btn ghost" id="closeOffer">Cerrar</button>
+    </div>
+  </div>
+</div>
+
+<section id="contact" style="margin-top:40px;display:grid;grid-template-columns:1fr 380px;gap:20px">
+  <div style="border-radius:12px;overflow:hidden">
+    <iframe width="100%" height="300" style="border:0" src="https://www.google.com/maps?q=Av.+Barcelo,+B%C3%ADbijagua,+B%C3%A1varo+Punta+Cana&output=embed"></iframe>
+  </div>
+  <div class="card">
+    <h4>Contacto</h4>
+    <p>Av. Barcelo, Bibijagua, Bávaro, Punta Cana</p>
+    <p id="contactWhats">WhatsApp: <a href="https://wa.me/18093937692" target="_blank">+1 809 393 7692</a></p>
+    <p>Email: <a href="mailto:Marcobastardo958@gmail.com">Marcobastardo958@gmail.com</a></p>
+  </div>
+</section>
+
+<footer style="margin-top:40px;padding:20px 0;border-top:1px solid rgba(255,255,255,.03);display:flex;justify-content:space-between;flex-wrap:wrap">
+  <div>
+    <strong>Marcos Rent Car</strong>
+    <div style="margin-top:8px">© <span id="year"></span> Marcos Rent Car · Av. Barcelo, Bibijagua, Bávaro, Punta Cana</div>
+  </div>
+  <div style="text-align:right">
+    <div class="small">Pagos aceptados: Efectivo · Zelle · Paypal · Western Union · Cash App · MasterCard · Visa · Apple Pay · American Express · BTC · USDT</div>
+    <div style="margin-top:8px"><a href="#" class="small">Términos y condiciones</a> · <a href="#" class="small">Política de privacidad</a></div>
+  </div>
+</footer>
+
+<!-- Floating WhatsApp button (logo SVG) -->
+<a class="whatsapp" id="waFloat" href="https://wa.me/18093937692?text=Hola!%20Quiero%20informaci%C3%B3n%20y%20reservar%20un%20servicio" target="_blank" rel="noopener">
+  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 32 32" fill="#fff" aria-hidden="true"><path d="M16.027 3C9.383 3 4 8.383 4 15.027c0 2.652.855 5.106 2.313 7.1L4 29l7.137-2.273A11.94 11.94 0 0 0 16.027 27C22.67 27 28 21.617 28 14.973 28 8.33 22.67 3 16.027 3Zm0 21.818c-1.91 0-3.68-.555-5.184-1.51l-.37-.23-4.243 1.35 1.386-4.137-.242-.402a9.78 9.78 0 0 1-1.52-5.357c0-5.41 4.4-9.81 9.81-9.81 5.41 0 9.81 4.4 9.81 9.81 0 5.41-4.4 9.81-9.81 9.81Zm5.41-7.34c-.295-.148-1.758-.867-2.03-.967-.273-.1-.472-.148-.67.148-.197.295-.768.967-.94 1.164-.173.197-.347.222-.642.074-.295-.148-1.245-.46-2.37-1.467-.876-.78-1.468-1.74-1.64-2.035-.173-.295-.018-.455.13-.603.133-.133.295-.347.443-.52.148-.173.197-.296.296-.494.099-.197.05-.37-.025-.519-.074-.148-.67-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.01-.37-.012-.568-.012-.197 0-.52.074-.792.37-.272.295-1.04 1.016-1.04 2.48 0 1.463 1.065 2.875 1.213 3.074.148.197 2.095 3.2 5.077 4.487.71.306 1.263.489 1.694.626.712.227 1.36.195 1.872.118.571-.085 1.758-.718 2.006-1.413.247-.695.247-1.29.173-1.414-.074-.123-.27-.197-.566-.345Z"/></svg>
+</a>
+
+<script>
+(function(){
+  // particles background
+  var bgP = document.getElementById('bgParticles');
+  if(bgP){ for(var i=0;i<80;i++){var d=document.createElement('div');d.className='particle';d.style.left=Math.random()*100+'%';d.style.top=Math.random()*100+'%';d.style.opacity=0.15+Math.random()*0.6;d.style.transform='scale('+ (0.4+Math.random()*1.6) +')';bgP.appendChild(d);} }
+
+  // language auto (basic set)
+  var translations = {
+    es:{heroTitle:'Transporte VIP y Excursiones en Punta Cana',heroSub:'Taxi, transporte privado, excursiones VIP, alquiler de yates y rent car. Cobertura en toda la isla. Servicio 24/7 — reserva fácil y segura.',ctaReserve:'Reservar ahora',ctaServices:'Ver servicios',cardTitle:'Reserva rápida',submit:'Enviar reserva'},
+    en:{heroTitle:'VIP Transport & Excursions in Punta Cana',heroSub:'Taxi, private transfers, VIP tours, yacht rentals and rent car. Coverage across the island. 24/7 service — easy secure booking.',ctaReserve:'Book now',ctaServices:'See services',cardTitle:'Quick reservation',submit:'Send reservation'}
+  };
+  try{var navLang=(navigator.languages&&navigator.languages[0])||navigator.language||'es';var code=(navLang&&navLang.slice(0,2))?navLang.slice(0,2).toLowerCase():'es';var lang=translations[code]?code:'es';document.getElementById('heroTitle').textContent=translations[lang].heroTitle;document.getElementById('heroSub').textContent=translations[lang].heroSub;document.getElementById('ctaReserve').textContent=translations[lang].ctaReserve;document.getElementById('ctaServices').textContent=translations[lang].ctaServices;document.getElementById('cardTitle').textContent=translations[lang].cardTitle;}catch(e){}
+
+  // dates
+  var start=document.getElementById('start'),end=document.getElementById('end');try{var today=new Date().toISOString().split('T')[0];if(start)start.min=today;if(end)end.min=today;if(start)start.addEventListener('change',function(){if(start.value&&end)end.min=start.value});}catch(e){}
+
+  // reservation handling
+  function sendReservation(){var form=document.getElementById('reservationForm');if(!form)return;var name=(document.getElementById('name')||{}).value||'';var phone=(document.getElementById('phone')||{}).value||'';var email=(document.getElementById('email')||{}).value||'';var startDate=(document.getElementById('start')||{}).value||'';var endDate=(document.getElementById('end')||{}).value||'';var service=(document.getElementById('service')||{}).value||'';var lines=[];lines.push('Reserva desde la web:');lines.push('Nombre: '+name);lines.push('Tel: '+phone);lines.push('Email: '+email);lines.push('Inicio: '+startDate);lines.push('Entrega: '+endDate);lines.push('Servicio: '+service);var body=lines.join('\n');var mailto='mailto:Marcobastardo958@gmail.com'+'?subject='+encodeURIComponent('Nueva reserva Marcos Rent Car')+'&body='+encodeURIComponent(body);var waNumber='18093937692';var waUrl='https://wa.me/'+waNumber+'?text='+encodeURIComponent(body);try{window.location.href=mailto;}catch(e){}try{window.open(waUrl,'_blank');}catch(e){} }
+  var submitBtn=document.getElementById('submitBtn');if(submitBtn)submitBtn.addEventListener('click',function(e){sendReservation();});
+  var waQuick=document.getElementById('waQuick');if(waQuick)waQuick.addEventListener('click',function(){var n=(document.getElementById('name')||{}).value||'';var p=(document.getElementById('phone')||{}).value||'';var s=(document.getElementById('service')||{}).value||'';var msg='Reserva rápida:%0ANombre:%20'+encodeURIComponent(n)+'%0ATeléfono:%20'+encodeURIComponent(p)+'%0AServicio:%20'+encodeURIComponent(s);window.open('https://wa.me/18093937692?text='+msg,'_blank');});
+
+  // popup logic
+  var offer=document.getElementById('offerPopup');var closeBtn=document.getElementById('closeOffer');var claim=document.getElementById('claimOffer');
+  setTimeout(function(){if(offer){offer.style.display='block';offer.querySelector('.offer-inner').classList.add('fade-in');}},3500);
+  if(closeBtn)closeBtn.addEventListener('click',function(){if(offer)offer.style.display='none'});
+  if(claim)claim.addEventListener('click',function(){var body='Hola! Quiero reclamar la 5% de descuento en mi reserva.';window.open('https://wa.me/18093937692?text='+encodeURIComponent(body),'_blank');if(offer)offer.style.display='none'});
+
+  // year
+  var year=document.getElementById('year');if(year)year.textContent=new Date().getFullYear();
+
+})();
+</script>
+</body>
+</html>
