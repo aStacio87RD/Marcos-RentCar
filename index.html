@@ -1,273 +1,502 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Marcos Rent Car — Punta Cana</title>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --accent1:#00e6ff;
-    --accent2:#00ff99;
-    --bg-0:#071025;
-    --bg-1:#07122b;
-    --glass: rgba(255,255,255,0.04);
-    --muted: rgba(255,255,255,0.7);
-    --card:#0f1720;
-  }
-  *{box-sizing:border-box}
-  html,body{height:100%; margin:0; font-family:"Poppins",sans-serif; -webkit-font-smoothing:antialiased}
-  body{
-    background: linear-gradient(180deg,var(--bg-0) 0%, var(--bg-1) 60%);
-    color:#e6eef6;
-    overflow-x:hidden;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marcos Rent Car - Punta Cana</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #0a0a0f;
+      color: #fff;
+      overflow-x: hidden;
+    }
 
-  header{
-    display:flex; align-items:center; justify-content:space-between;
-    gap:12px; padding:18px 20px; position:sticky; top:0; z-index:60;
-    background: linear-gradient(90deg, rgba(0,0,0,0.25), rgba(0,0,0,0.12));
-    border-bottom:1px solid rgba(255,255,255,0.03);
-    backdrop-filter: blur(6px);
-  }
-  .brand{display:flex; gap:12px; align-items:center}
-  .logo{
-    font-family:"Orbitron"; font-size:1.35rem; padding:10px 14px; border-radius:12px;
-    background: linear-gradient(90deg,var(--accent1),var(--accent2)); color:#021018;
-    box-shadow:0 8px 30px rgba(0,255,170,0.06);
-  }
-  .tagline{font-size:0.92rem; color:var(--muted)}
+    header {
+      background: linear-gradient(90deg, #001F3F, #0074D9, #39CCCC);
+      text-align: center;
+      padding: 2.5rem 1rem 1rem;
+      animation: glow 4s infinite alternate;
+      perspective: 1000px;
+      position: relative;
+    }
 
-  .lang-wrap{display:flex; align-items:center; gap:8px; position:relative}
-  .lang-btn{display:flex; gap:8px; align-items:center; padding:6px 8px; border-radius:10px;
-    background:rgba(255,255,255,0.03); cursor:pointer; border:1px solid rgba(255,255,255,0.03)}
-  .lang-btn img{width:22px; height:14px; object-fit:cover; border-radius:2px}
-  .lang-menu{position:absolute; right:0; top:48px; background:rgba(3,6,12,0.8); padding:8px; border-radius:8px; display:none; box-shadow:0 12px 30px rgba(0,0,0,0.6)}
-  .lang-item{display:flex; gap:8px; align-items:center; padding:6px 8px; cursor:pointer; border-radius:6px}
-  .lang-item:hover{background:rgba(255,255,255,0.02)}
+    @keyframes glow {
+      from { box-shadow: 0 0 10px #39CCCC; }
+      to { box-shadow: 0 0 25px #0074D9; }
+    }
 
-  .hero-wrap{
-    position:relative; width:100%; height:70vh; max-height:800px; overflow:hidden;
-  }
-  .hero-wrap video{
-    width:100%; height:100%; object-fit:cover;
-    position:absolute; top:0; left:0; z-index:1;
-  }
-  .hero-overlay{
-    position:absolute; inset:0; z-index:3; display:flex; align-items:center; justify-content:center;
-    pointer-events:none;
-  }
-  .hero-content{text-align:center; pointer-events:auto; padding:20px; color:#fff;}
-  .hero-title{font-family:"Orbitron"; font-size:2.8rem; background:linear-gradient(90deg,var(--accent1),var(--accent2)); -webkit-background-clip:text; color:transparent; text-shadow:0 12px 30px rgba(0,0,0,0.6);}
-  .hero-sub{margin-top:8px; color:var(--muted);}
-  .hero-ctas{margin-top:14px; display:flex; gap:10px; justify-content:center;}
-  .btn{
-    display:inline-flex; align-items:center; gap:10px; padding:12px 18px; border-radius:999px;
-    background: linear-gradient(90deg,var(--accent1),var(--accent2)); color:#021018; font-weight:700; text-decoration:none;
-    box-shadow:0 12px 36px rgba(0,255,170,0.06); border:none; cursor:pointer; transition:transform .18s ease;
-  }
-  .btn:hover{transform:translateY(-4px)}
+    header h1 {
+      font-size: 2.8rem;
+      letter-spacing: 2px;
+      transform: rotateY(10deg);
+      animation: floatText 5s infinite alternate ease-in-out;
+      cursor: pointer;
+    }
 
-  main{max-width:1200px; margin:28px auto; padding:0 18px 60px}
-  .services{display:grid; grid-template-columns:repeat(2,1fr); gap:18px}
-  .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-radius:12px; padding:16px; display:flex; gap:14px; align-items:flex-start; border:1px solid rgba(255,255,255,0.03); transition:transform .18s ease, box-shadow .18s ease}
-  .card:hover{transform:translateY(-8px); box-shadow:0 28px 48px rgba(2,6,23,0.6)}
-  .card svg{width:72px; height:72px; flex-shrink:0}
-  .card h3{margin:0 0 6px 0}
-  .card p{margin:0; color:rgba(255,255,255,0.85)}
+    @keyframes floatText {
+      from { transform: rotateY(10deg) translateY(0); }
+      to { transform: rotateY(-10deg) translateY(-5px); }
+    }
 
-  .panel{margin-top:22px; display:grid; grid-template-columns:1fr 420px; gap:20px; align-items:start}
-  .panel .right{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:18px; border-radius:12px; border:1px solid rgba(255,255,255,0.03)}
-  form{display:grid; gap:10px}
-  label{font-size:0.85rem; color:rgba(255,255,255,0.85)}
-  input,textarea,select{width:100%; padding:10px 12px; border-radius:10px; border:1px solid rgba(255,255,255,0.06); background:transparent; color:#e6eef6; outline:none}
-  textarea{min-height:92px; resize:vertical}
-  .row{display:flex; gap:10px}
-  .row .col{flex:1}
-  .actions{display:flex; gap:10px; margin-top:8px}
-  .muted{font-size:0.85rem; color:rgba(255,255,255,0.6)}
+    header p {
+      margin-top: .5rem;
+      font-size: 1.2rem;
+      opacity: 0.9;
+      animation: fadeIn 2s ease forwards;
+    }
 
-  .whatsapp-fab{
-    position:fixed; right:18px; bottom:18px; z-index:90;
-    width:64px; height:64px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:26px; color:#021018;
-    background: linear-gradient(90deg,#25d366,#00c06b); box-shadow:0 18px 48px rgba(2,6,23,0.45); cursor:pointer; border:none;
-    animation:fabPulse 2200ms infinite;
-  }
-  @keyframes fabPulse{0%{transform:scale(1)}50%{transform:scale(1.06)}100%{transform:scale(1)}}
+    /* Selector de idioma */
+    .lang-selector {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+    }
 
-  footer{margin-top:36px; text-align:center; padding:22px; color:rgba(255,255,255,0.6)}
+    .lang-selector select {
+      background: rgba(255,255,255,0.1);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 8px;
+      padding: 0.4rem 0.7rem;
+      cursor: pointer;
+      font-weight: 600;
+      outline: none;
+    }
 
-  @media (max-width:980px){
-    .services{grid-template-columns:1fr}
-    .panel{grid-template-columns:1fr}
-    .hero-title{font-size:1.8rem}
-  }
-  @media (max-width:520px){
-    header{padding:12px}
-    .logo{font-size:1rem}
-    .hero-title{font-size:1.4rem}
-  }
-</style>
+    .lang-selector select:hover {
+      background: rgba(0,255,204,0.2);
+      border-color: #00ff99;
+    }
+
+    /* SLIDER INFINITO */
+    .slider {
+      position: relative;
+      width: 100%;
+      height: 60vh;
+      overflow: hidden;
+    }
+
+    .slides {
+      display: flex;
+      width: calc(200%);
+      height: 100%;
+      animation: scrollInfinite 40s linear infinite;
+    }
+
+    .slides img {
+      width: 100vw;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.7);
+      flex-shrink: 0;
+      transition: transform 5s ease;
+    }
+
+    .slides img:hover { transform: scale(1.05); }
+
+    @keyframes scrollInfinite {
+      from { transform: translateX(0); }
+      to { transform: translateX(-100%); }
+    }
+
+    .hero-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: #fff;
+      z-index: 2;
+      animation: fadeInUp 2s ease forwards;
+    }
+
+    .hero-text h2 {
+      font-size: 2.4rem;
+      text-shadow: 0 0 20px rgba(0,0,0,0.8);
+      background: linear-gradient(90deg, #00e6ff, #00ff99);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: textFloat 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes textFloat {
+      from { transform: perspective(800px) rotateX(15deg) translateY(0); }
+      to { transform: perspective(800px) rotateX(-15deg) translateY(-8px); }
+    }
+
+    .hero-text a {
+      display: inline-block;
+      margin-top: 1rem;
+      background: linear-gradient(90deg, #25D366, #00ff99);
+      color: white;
+      padding: 0.9rem 2.2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 0 15px rgba(0,255,153,0.6);
+      transition: all 0.3s ease;
+    }
+
+    section {
+      padding: 3rem 1rem;
+      max-width: 1100px;
+      margin: auto;
+      text-align: center;
+      animation: fadeInUp 2s ease;
+    }
+
+    h2 {
+      font-size: 2.2rem;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(90deg, #00ccff, #00ff99);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .service {
+      background: rgba(255,255,255,0.05);
+      border-radius: 15px;
+      padding: 1.5rem;
+      transition: 0.4s;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .service:hover {
+      transform: scale(1.05);
+      background: rgba(0, 255, 204, 0.08);
+      border-color: #00ff99;
+      box-shadow: 0 0 20px rgba(0,255,204,0.3);
+    }
+
+    .service img {
+      width: 100%;
+      border-radius: 12px;
+      height: 160px;
+      object-fit: cover;
+    }
+
+    .service h3 { color: #00ffcc; margin: 1rem 0 .5rem; }
+
+    .comment-box {
+      background: rgba(255,255,255,0.05);
+      padding: 2rem;
+      border-radius: 15px;
+      max-width: 700px;
+      margin: 2.5rem auto;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .comment-box input, .comment-box textarea {
+      width: 100%;
+      padding: 0.8rem;
+      margin: 0.6rem 0;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+    }
+
+    .comment-box button {
+      background: linear-gradient(90deg, #25D366, #00ff99);
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 50px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .contact {
+      text-align: center;
+      background: linear-gradient(90deg, #001F3F, #0074D9);
+      padding: 3rem 1rem;
+      color: white;
+      border-top: 5px solid #00ff99;
+    }
+
+    footer {
+      text-align: center;
+      background: #000814;
+      color: #aaa;
+      padding: 1rem;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: linear-gradient(90deg, #25D366, #00ff99);
+      color: white;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      box-shadow: 0 0 15px rgba(0,255,153,0.5);
+      text-decoration: none;
+      cursor: pointer;
+      z-index: 100;
+    }
+
+    @media (max-width: 768px) {
+      .hero-text h2 { font-size: 1.6rem; }
+      header h1 { font-size: 1.6rem; }
+      .slider { height: 45vh; }
+    }
+  </style>
 </head>
-
 <body>
-
-<header role="banner" aria-label="Encabezado">
-  <div class="brand">
-    <div class="logo">🚗 Marcos Rent Car</div>
-    <div class="tagline" data-i18n="tagline">Conduce el futuro del turismo • Punta Cana</div>
-  </div>
-
-  <div class="lang-wrap" aria-label="Selector de idioma">
-    <div class="lang-btn" id="langBtn" title="Cambiar idioma" aria-haspopup="true" aria-expanded="false">
-      <img id="currentFlag" src="https://flagcdn.com/w20/do.png" alt="Bandera actual">
-      <span id="currentLang">ES</span>
+  <header>
+    <div class="lang-selector">
+      <select id="lang" onchange="changeLang(this.value)">
+        <option value="es">🇪🇸 Español</option>
+        <option value="en">🇺🇸 English</option>
+        <option value="pt">🇧🇷 Português</option>
+        <option value="it">🇮🇹 Italiano</option>
+        <option value="ru">🇷🇺 Русский</option>
+      </select>
     </div>
-    <div class="lang-menu" id="langMenu" role="menu" aria-hidden="true" aria-label="Menú de idiomas"></div>
-  </div>
-</header>
 
-<div class="hero-wrap" role="img" aria-label="Video hero de autos, yates y transporte">
-  <video src="https://chatgpt.com/s/m_6917e3a3b2a88191877bc70058f7bae9" autoplay loop muted playsinline></video>
-  <div class="hero-overlay">
-    <div class="hero-content">
-      <h1 class="hero-title" data-i18n="heroTitle">Explora con Estilo — Conduce con Libertad</h1>
-      <p class="hero-sub" data-i18n="heroSubtitle">Renta autos, transporte VIP, yates y transporte de personal empresarial.</p>
-      <div class="hero-ctas">
-        <a href="#reserva" class="btn" data-i18n="bookNow">Reservar ahora</a>
+    <h1 id="t1">🚗 Marcos Rent Car</h1>
+    <p id="t2">Conduce el Futuro del Turismo en Punta Cana</p>
+  </header>
+
+  <div class="slider">
+    <div class="slides">
+      <img src="https://media.gq.com.mx/photos/65eb81c6e4788bcc1e703bcd/16:9/w_2560%2Cc_limit/Autos_deportivos_de_equipos_de_la_Fo%25CC%2581rmula_1.jpg" alt="Auto Deportivo">
+      <img src="https://media.ed.edmunds-media.com/honda/cr-v/2026/oem/2026_honda_cr-v_4dr-suv_trailsport-hybrid_fq_oem_1_1600.jpg" alt="SUV">
+      <img src="https://cdn.milenio.com/uploads/media/2019/08/02/medida-involucra-minivans-fabricaron-agosto_7_0_1607_1000.jpeg" alt="Familiar">
+      <img src="https://media.revistagq.com/photos/5ca5f45abfc0eb2b9f1c814d/4:3/w_1200,h_900,c_limit/rubicon_7387.png" alt="Jeep 4x4">
+      <!-- repetimos para efecto infinito -->
+      <img src="https://media.gq.com.mx/photos/65eb81c6e4788bcc1e703bcd/16:9/w_2560%2Cc_limit/Autos_deportivos_de_equipos_de_la_Fo%25CC%2581rmula_1.jpg" alt="Auto Deportivo">
+      <img src="https://media.ed.edmunds-media.com/honda/cr-v/2026/oem/2026_honda_cr-v_4dr-suv_trailsport-hybrid_fq_oem_1_1600.jpg" alt="SUV">
+      <img src="https://cdn.milenio.com/uploads/media/2019/08/02/medida-involucra-minivans-fabricaron-agosto_7_0_1607_1000.jpeg" alt="Familiar">
+      <img src="https://media.revistagq.com/photos/5ca5f45abfc0eb2b9f1c814d/4:3/w_1200,h_900,c_limit/rubicon_7387.png" alt="Jeep 4x4">
+    </div>
+
+    <div class="hero-text">
+      <h2 id="t3">Explora con Estilo, Conduce con Libertad</h2>
+      <a id="t4" class="whats-cta" href="https://wa.me/18093937692?text=Hola%20Marcos%20Rent%20Car!" target="_blank">💬 Reserva por WhatsApp</a>
+    </div>
+  </div>
+
+  <section id="servicios">
+    <h2 id="t5">Servicios Premium</h2>
+    <div class="services">
+      <div class="service">
+        <img src="https://beforeboarding.com/wp-content/uploads/2024/01/39-1024x640.jpg" alt="Rent Car">
+        <h3 id="t6">Renta de Autos</h3>
+        <p id="t7">Autos deportivos, familiares y SUV modernos, perfectos para cualquier viaje.</p>
+      </div>
+
+      <div class="service">
+        <img src="https://inpunto.la/wp-content/uploads/2021/04/Traslado-corporativo_como-elegir-el-mejor-servicio.jpg" alt="Transporte VIP">
+        <h3 id="t8">Transporte VIP</h3>
+        <p id="t9">Viaja con lujo y puntualidad, con chofer privado desde y hacia el aeropuerto.</p>
+      </div>
+
+      <div class="service">
+        <img src="https://media.tacdn.com/media/attractions-splice-spp-674x446/12/64/a1/f1.jpg" alt="Excursiones">
+        <h3 id="t10">Excursiones</h3>
+        <p id="t11">Excursiones guiadas a playas, ríos y montañas — experiencias auténticas y seguras.</p>
+      </div>
+
+      <div class="service">
+        <img src="https://cdn.tourcms.com/a/13222/721/1/large.png" alt="Yates">
+        <h3 id="t12">Renta de Yates</h3>
+        <p id="t13">Alquila yates para celebraciones privadas, paseos al atardecer y eventos especiales.</p>
       </div>
     </div>
-  </div>
-</div>
-
-<main>
-  <section class="services" aria-label="Servicios">
-    <article class="card" aria-labelledby="srv1">
-      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 13l1.5-4.5A3 3 0 0 1 7.4 7H16.6a3 3 0 0 1 2.9 1.5L21 13v3a1 1 0 0 1-1 1h-1.2a2 2 0 1 1-3.6 0H9.8a2 2 0 1 1-3.6 0H5a1 1 0 0 1-1-1v-3z" stroke="#00ffcc" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <div><h3 id="srv1" data-i18n="srv_rent">Alquiler de Autos</h3><p data-i18n="srv_rent_txt">Flota variada: deportivos, SUVs, familiares y premium.</p></div>
-    </article>
-
-    <article class="card" aria-labelledby="srv2">
-      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 10h18M6 6h.01M18 6h.01" stroke="#00ffcc" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <div><h3 id="srv2" data-i18n="srv_vip">Transporte VIP</h3><p data-i18n="srv_vip_txt">Chofer profesional, puntualidad y máxima comodidad.</p></div>
-    </article>
-
-    <article class="card" aria-labelledby="srv3">
-      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 16s4-3 9-3 9 3 9 3v3H3v-3zM12 3v8" stroke="#00ffcc" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <div><h3 id="srv3" data-i18n="srv_yacht">Renta de Yates</h3><p data-i18n="srv_yacht_txt">Yates privados con tripulación para celebraciones y paseos.</p></div>
-    </article>
-
-    <article class="card" aria-labelledby="srv4">
-      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 20a4 4 0 0 1 8 0M16 20a4 4 0 0 1 8 0" stroke="#00ffcc" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <div><h3 id="srv4" data-i18n="srv_corp">Transporte Corporativo</h3><p data-i18n="srv_corp_txt">Soluciones para empresas: rutas y traslados masivos.</p></div>
-    </article>
   </section>
 
-  <div class="panel" id="reserva" aria-labelledby="reservaTitle">
-    <div>
-      <h2 id="reservaTitle" style="margin:0 0 10px 0;color:var(--accent1)" data-i18n="reserveIntroTitle">Reserva rápida</h2>
-      <p class="muted" data-i18n="reserveIntro">Rellena el formulario y envíalo por WhatsApp — respuesta rápida.</p>
-
-      <form id="bookingForm" autocomplete="on" aria-label="Formulario de reserva">
-        <div class="row">
-          <div class="col">
-            <label for="name" data-i18n="lbl_name">Nombre</label>
-            <input id="name" name="name" type="text" required placeholder="">
-          </div>
-          <div class="col">
-            <label for="phone" data-i18n="lbl_phone">Teléfono</label>
-            <input id="phone" name="phone" type="tel" required placeholder="+1 809 000 0000">
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col">
-            <label for="email" data-i18n="lbl_email">Correo</label>
-            <input id="email" name="email" type="email" placeholder="">
-          </div>
-          <div class="col">
-            <label for="service" data-i18n="lbl_service">Servicio</label>
-            <select id="service" name="service" required>
-              <option value="rent">Alquiler de Autos</option>
-              <option value="vip">Transporte VIP</option>
-              <option value="yacht">Renta de Yates</option>
-              <option value="corp">Transporte Corporativo</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col">
-            <label for="pickup" data-i18n="lbl_pickup">Fecha/Hora (Inicio)</label>
-            <input id="pickup" name="pickup" type="datetime-local" required>
-          </div>
-          <div class="col">
-            <label for="return" data-i18n="lbl_return">Fecha/Hora (Fin)</label>
-            <input id="return" name="return" type="datetime-local">
-          </div>
-        </div>
-
-        <label for="message" data-i18n="lbl_message">Detalles / Comentarios</label>
-        <textarea id="message" name="message" placeholder=""></textarea>
-
-        <div class="actions">
-          <button type="button" class="btn" id="btnSendWA" aria-label="Enviar por WhatsApp">💬 Enviar por WhatsApp</button>
-          <button type="button" class="btn" id="btnClear" style="background:transparent;color:var(--accent1);border:1px solid rgba(255,255,255,0.06)">Limpiar</button>
-        </div>
-        <div id="formNote" class="muted" style="margin-top:8px"></div>
-      </form>
+  <section id="comentarios">
+    <h2>💬 Déjanos tu comentario</h2>
+    <div class="comment-box">
+      <input type="text" id="nombre" placeholder="Name" required>
+      <input type="email" id="correo" placeholder="Email" required>
+      <textarea id="comentario" rows="4" placeholder="Your Comment Here..." required></textarea>
+      <button onclick="enviarWhatsApp()">Enviar por WhatsApp</button>
     </div>
+  </section>
 
-    <aside class="right" aria-label="Contacto rápido">
-      <h4 data-i18n="contactTitle">Contacto Rápido</h4>
-      <p class="muted" data-i18n="contactPhoneLabel">WhatsApp:</p>
-      <p><strong id="contactPhone">+1 (809) 393-7692</strong></p>
-      <p class="muted" data-i18n="contactEmailLabel">Email:</p>
-      <p><strong id="contactEmail">marcobastardo958@gmail.com</strong></p>
+  <section class="contact">
+    <h2 id="t14">📞 Contáctanos</h2>
+    <p id="t15">WhatsApp: <strong>+1 (809) 393-7692</strong></p>
+    <p id="t16">Email: <strong>marcobastardo958@gmail.com</strong></p>
+    <a id="t17" class="whats-cta" href="https://wa.me/18093937692" target="_blank">💬 Escribir por WhatsApp</a>
+  </section>
 
-      <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap">
-        <a id="waQuick" class="btn" href="#" target="_blank">💬 WhatsApp</a>
-        <a id="mailQuick" class="btn" href="#" target="_blank">📧 Email</a>
-      </div>
+  <a href="https://wa.me/18093937692" class="whatsapp-float" target="_blank">💬</a>
 
-      <div style="margin-top:14px; font-size:0.9rem; color:rgba(255,255,255,0.65)">
-        <strong data-i18n="noteTitle">Nota:</strong>
-        <div data-i18n="noteText">Confirmamos disponibilidad en menos de 30 minutos. Para reservas urgentes usa WhatsApp.</div>
-      </div>
-    </aside>
-  </div>
-</main>
+  <footer id="t18">© 2025 Marcos Rent Car | Punta Cana, República Dominicana</footer>
 
-<button class="whatsapp-fab" id="floatingWA" title="WhatsApp" aria-label="WhatsApp">💬</button>
+  <script>
+    // Traducciones: 18 entradas (t1..t18)
+    const texts = {
+      es: [
+        "🚗 Marcos Rent Car", // t1
+        "Conduce el Futuro del Turismo en Punta Cana", // t2
+        "Explora con Estilo, Conduce con Libertad", // t3
+        "💬 Reserva por WhatsApp", // t4
+        "Servicios Premium", // t5
+        "Renta de Autos", // t6
+        "Autos deportivos, familiares y SUV modernos, perfectos para cualquier viaje.", // t7
+        "Transporte VIP", // t8
+        "Viaja con lujo y puntualidad, con chofer privado desde y hacia el aeropuerto.", // t9
+        "Excursiones", // t10
+        "Excursiones guiadas a playas, ríos y montañas — experiencias auténticas y seguras.", // t11
+        "Renta de Yates", // t12
+        "Alquila yates para celebraciones privadas, paseos al atardecer y eventos especiales.", // t13
+        "📞 Contáctanos", // t14
+        "WhatsApp:", // t15
+        "Email:", // t16
+        "💬 Escribir por WhatsApp", // t17
+        "© 2025 Marcos Rent Car | Punta Cana, República Dominicana" // t18
+      ],
 
-<footer>
-  © 2025 Marcos Rent Car • Punta Cana — Diseño profesional
-</footer>
+      en: [
+        "🚗 Marcos Rent Car",
+        "Drive the Future of Tourism in Punta Cana",
+        "Explore in Style, Drive with Freedom",
+        "💬 Book via WhatsApp",
+        "Premium Services",
+        "Car Rentals",
+        "Sports cars, family cars and modern SUVs — perfect for any trip.",
+        "VIP Transport",
+        "Travel with luxury and punctuality with a private driver to and from the airport.",
+        "Excursions",
+        "Guided excursions to beaches, rivers and mountains — authentic and safe experiences.",
+        "Yacht Rental",
+        "Rent yachts for private celebrations, sunset cruises and special events.",
+        "📞 Contact Us",
+        "WhatsApp:",
+        "Email:",
+        "💬 Message on WhatsApp",
+        "© 2025 Marcos Rent Car | Punta Cana, Dominican Republic"
+      ],
 
-<script>
-  const CONFIG = {
-    whatsappNumber: "18094078708",
-    email: "marcobastardo958@gmail.com",
-    supportedLangs: ["es","en","fr","pt","it","ru"]
-  };
-  const I18N = { /* (igual que antes) */ };
+      pt: [
+        "🚗 Marcos Rent Car",
+        "Dirija o Futuro do Turismo em Punta Cana",
+        "Explore com Estilo, Dirija com Liberdade",
+        "💬 Reserve pelo WhatsApp",
+        "Serviços Premium",
+        "Aluguel de Carros",
+        "Carros esportivos, familiares e SUVs modernos, perfeitos para qualquer viagem.",
+        "Transporte VIP",
+        "Viaje com luxo e pontualidade, com motorista particular de ida e volta ao aeroporto.",
+        "Excursões",
+        "Excursões guiadas a praias, rios e montanhas — experiências autênticas e seguras.",
+        "Aluguel de Iates",
+        "Alugue iates para celebrações privadas, passeios ao pôr do sol e eventos especiais.",
+        "📞 Contate-nos",
+        "WhatsApp:",
+        "Email:",
+        "💬 Enviar pelo WhatsApp",
+        "© 2025 Marcos Rent Car | Punta Cana, República Dominicana"
+      ],
 
-  /* Detcción idioma */
-  const userLangRaw = navigator.language || navigator.userLanguage || "es";
-  const langCandidate = userLangRaw.slice(0,2).toLowerCase();
-  const LANG = CONFIG.supportedLangs.includes(langCandidate) ? langCandidate : "es";
-  function applyI18n(lang){ /* … igual que antes … */ }
-  applyI18n(LANG);
+      it: [
+        "🚗 Marcos Rent Car",
+        "Guida il Futuro del Turismo a Punta Cana",
+        "Esplora con Stile, Guida con Libertà",
+        "💬 Prenota su WhatsApp",
+        "Servizi Premium",
+        "Noleggio Auto",
+        "Auto sportive, familiari e SUV moderni, perfetti per ogni viaggio.",
+        "Trasporto VIP",
+        "Viaggia con lusso e puntualità con autista privato da e verso l'aeroporto.",
+        "Escursioni",
+        "Escursioni guidate a spiagge, fiumi e montagne — esperienze autentiche e sicure.",
+        "Noleggio Yacht",
+        "Noleggia yacht per celebrazioni private, tramonti e eventi speciali.",
+        "📞 Contattaci",
+        "WhatsApp:",
+        "Email:",
+        "💬 Scrivi su WhatsApp",
+        "© 2025 Marcos Rent Car | Punta Cana, Repubblica Dominicana"
+      ],
 
-  /* Menú de idiomas: igual que antes */
+      ru: [
+        "🚗 Marcos Rent Car",
+        "Веди будущее туризма в Пунта-Кане",
+        "Исследуй со стилем, води со свободой",
+        "💬 Забронировать в WhatsApp",
+        "Премиум Услуги",
+        "Аренда Авто",
+        "Спортивные, семейные и современные внедорожники — идеально для любой поездки.",
+        "VIP Транспорт",
+        "Путешествуйте с роскошью и пунктуальностью с личным водителем до и из аэропорта.",
+        "Экскурсии",
+        "Экскурсии к пляжам, рекам и горам — безопасные и аутентичные впечатления.",
+        "Аренда Яхт",
+        "Арендуйте яхты для частных праздников, закатных прогулок и специальных событий.",
+        "📞 Свяжитесь с нами",
+        "WhatsApp:",
+        "Email:",
+        "💬 Написать в WhatsApp",
+        "© 2025 Marcos Rent Car | Пунта-Кана, Доминиканская Республика"
+      ]
+    };
 
-  /* Lógica del formulario y WhatsApp: igual que antes */
+    function changeLang(lang) {
+      // actualizar t1..t18
+      for (let i = 1; i <= 18; i++) {
+        const el = document.getElementById("t" + i);
+        if (el && texts[lang] && texts[lang][i - 1] !== undefined) {
+          el.innerHTML = texts[lang][i - 1];
+        }
+      }
 
-  /* Floating WhatsApp link: igual que antes */
-  document.getElementById("floatingWA").addEventListener("click", ()=> window.open(`https://wa.me/${CONFIG.whatsappNumber}`, "_blank"));
-  document.getElementById("waQuick").href = `https://wa.me/${CONFIG.whatsappNumber}`;
-  document.getElementById("mailQuick").href = `mailto:${CONFIG.email}`;
+      // también actualizamos atributos 'href' de los botones de WhatsApp para incluir mensajes localizados cortos
+      const whatsButtons = document.querySelectorAll('.whats-cta');
+      let msg = "";
+      switch (lang) {
+        case 'en': msg = "Hello Marcos Rent Car!"; break;
+        case 'pt': msg = "Olá Marcos Rent Car!"; break;
+        case 'it': msg = "Ciao Marcos Rent Car!"; break;
+        case 'ru': msg = "Здравствуйте Marcos Rent Car!"; break;
+        default: msg = "Hola Marcos Rent Car!";
+      }
+      whatsButtons.forEach(btn => {
+        // número por defecto (usa tu número preferido)
+        const number = btn.href.includes("18093937692") ? "18093937692" : "18094078708";
+        btn.href = `https://wa.me/${number}?text=${encodeURIComponent(msg)}`;
+      });
+    }
 
-</script>
+    // función de envío del formulario por WhatsApp (usa número fijo)
+    function enviarWhatsApp() {
+      const nombre = document.getElementById("nombre").value.trim();
+      const correo = document.getElementById("correo").value.trim();
+      const comentario = document.getElementById("comentario").value.trim();
+
+      if (!nombre || !correo || !comentario) {
+        alert("Por favor completa todos los campos antes de enviar. ❗");
+        return;
+      }
+
+      const mensaje = `Hola! 👋%0AQuiero dejar un comentario:%0A%0A*Nombre:* ${nombre}%0A*Correo:* ${correo}%0A*Comentario:* ${comentario}`;
+      const numero = "18093937692";
+      const url = `https://wa.me/${numero}?text=${mensaje}`;
+      window.open(url, "_blank");
+    }
+
+    // establecer idioma por defecto al cargar
+    document.addEventListener('DOMContentLoaded', () => {
+      const sel = document.getElementById('lang');
+      const initial = sel.value || 'es';
+      changeLang(initial);
+    });
+  </script>
 </body>
 </html>
