@@ -15,26 +15,19 @@ a{color:inherit;text-decoration:none}
 header{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
 .logo img{width:56px;height:56px;border-radius:10px;object-fit:cover}
 nav{display:flex;gap:12px;align-items:center}
-.bg-layer{position:fixed;inset:0;z-index:-4;overflow:hidden}
-.bg-gradient{position:absolute;inset:0;background:radial-gradient(circle at 10% 20%, rgba(0,212,212,0.06), transparent 15%),radial-gradient(circle at 90% 80%, rgba(110,231,183,0.04), transparent 20%),linear-gradient(140deg,#021025 0%, #041328 60%, #07112a 100%);filter:blur(6px);transform:scale(1.05)}
-.bg-grid{position:absolute;inset:0;background-image:repeating-linear-gradient(0deg, rgba(255,255,255,0.02) 0 1px, transparent 1px 80px),repeating-linear-gradient(90deg, rgba(255,255,255,0.02) 0 1px, transparent 1px 80px);opacity:.12;mix-blend-mode:overlay;animation:moveGrid 18s linear infinite}
-@keyframes moveGrid{from{background-position:0 0}to{background-position:0 200px}}
-.bg-particles{position:absolute;inset:0;pointer-events:none;opacity:.45}
-.particle{position:absolute;width:2px;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:50%;filter:blur(.4px);opacity:.7}
-.btn{background:linear-gradient(90deg,var(--accent),var(--accent-2));border:none;padding:12px 18px;border-radius:12px;color:#012;cursor:pointer;font-weight:700;transition:transform .25s,box-shadow .25s}
-.btn:hover{transform:translateY(-3px);box-shadow:0 0 18px rgba(0,212,212,0.55),0 0 30px rgba(110,231,183,0.35)}
-.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,.08);color:#e6f7f7}
-.hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:start;padding-top:8px}
-@media(max-width:980px){.hero{grid-template-columns:1fr}}
-.card{background:linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.02));backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.04);padding:20px;border-radius:14px;box-shadow:0 10px 40px rgba(0,0,0,0.6);transition:box-shadow .3s}
-.card:hover{box-shadow:0 0 28px rgba(0,212,212,0.35),0 0 55px rgba(110,231,183,0.25)}
 .services{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
 @media(max-width:900px){.services{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.services{grid-template-columns:1fr}}
-.service{padding:14px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03);transition:.3s;box-shadow:0 0 0 rgba(0,212,212,0.0)}
+.service{padding:14px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03);transition:.3s;box-shadow:0 0 0 rgba(0,212,212,0.0);display:flex;flex-direction:column;align-items:center;text-align:center}
+.service img{width:80px;height:80px;margin-bottom:10px;object-fit:cover;border-radius:12px}
 .service:hover{box-shadow:0 0 22px rgba(0,212,212,0.55),0 0 45px rgba(110,231,183,0.45);transform:translateY(-4px)}
-.whatsapp{position:fixed;right:18px;bottom:18px;background:linear-gradient(90deg,#25D366,#00b894);padding:12px;border-radius:50px;box-shadow:0 10px 30px rgba(0,0,0,0.5);display:flex;gap:10px;align-items:center;color:#fff;z-index:60}
-.whatsapp svg{display:block}
+.review-slider{display:flex;overflow-x:auto;gap:12px;padding:12px;margin-top:12px}
+.review{min-width:220px;background:rgba(0,0,0,0.2);border-radius:12px;padding:12px;box-shadow:0 4px 10px rgba(0,0,0,0.3);display:flex;flex-direction:column;align-items:center;text-align:center}
+.review img{width:50px;height:50px;border-radius:50%;object-fit:cover;margin-bottom:8px}
+#request-form{background:rgba(0,0,0,0.2);padding:20px;border-radius:12px;max-width:460px;margin:20px auto;display:flex;flex-direction:column;gap:10px}
+#request-form input,#request-form select{padding:10px;border-radius:8px;border:none;outline:none}
+#request-form button{cursor:pointer}
+#payment-methods{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:30px}
 .floating-logo{height:50px;object-fit:contain;animation:float 3s ease-in-out infinite;transition:transform .25s}
 .floating-logo:hover{transform:scale(1.15);animation:glowPulse 1.6s ease-in-out infinite}
 @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-12px)}100%{transform:translateY(0)}}
@@ -43,55 +36,79 @@ nav{display:flex;gap:12px;align-items:center}
 .offer-inner{position:relative;padding:18px;border-radius:12px;background:#fff;color:#000;max-width:460px;border:3px solid #e3c46f;box-shadow:0 0 20px rgba(255,215,0,0.6);overflow:visible;text-align:center}
 .offer-inner h2{margin-bottom:12px}
 .offer-cta{display:flex;gap:10px;justify-content:center;margin-top:12px}
-.review{background:rgba(0,0,0,0.2);border-radius:12px;padding:12px;margin-bottom:10px;box-shadow:0 4px 10px rgba(0,0,0,0.3)}
+#closePopup{background:red !important;color:#fff !important}
+.whatsapp{position:fixed;right:18px;bottom:18px;background:linear-gradient(90deg,#25D366,#00b894);padding:12px;border-radius:50px;box-shadow:0 10px 30px rgba(0,0,0,0.5);display:flex;gap:10px;align-items:center;color:#fff;z-index:60}
 </style>
 </head>
 <body>
-
 <div class="container">
 <header>
   <div style="display:flex;gap:12px;align-items:center">
-    <img class="logo" src="https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=120" alt="logo">
+    <img class="logo" src="https://images.unsplash.com/photo-1502877338535-766e1452684c?q=80&w=120" alt="logo">
     <div>
       <strong style="font-size:1.2rem">Marcos Rent Car</strong><br><small>Transporte VIP · Punta Cana</small>
     </div>
   </div>
   <nav>
     <a href="#services" style="margin-right:12px">Servicios</a>
-    <a href="#contact">Contacto</a>
+    <a href="#request-form">Reservas</a>
+    <a href="#payment-methods">Pagos</a>
   </nav>
 </header>
 
 <section class="services" id="services">
-  <div class="service">Taxi Aeroportuario</div>
-  <div class="service">Transporte Privado</div>
-  <div class="service">Transporte Empresarial</div>
-  <div class="service">Rent Car</div>
-  <div class="service">Alquiler de Yates</div>
-  <div class="service">Excursiones VIP</div>
+  <div class="service"><img src="https://images.unsplash.com/photo-1609928206367-91a22f702b95?w=80" alt="Taxi">Taxi Aeroportuario</div>
+  <div class="service"><img src="https://images.unsplash.com/photo-1612832021576-4277ed9c79c5?w=80" alt="Transporte">Transporte Privado</div>
+  <div class="service"><img src="https://images.unsplash.com/photo-1601933478756-f7fdd23ed40d?w=80" alt="Empresarial">Transporte Empresarial</div>
+  <div class="service"><img src="https://images.unsplash.com/photo-1592760971133-8f44f35d1010?w=80" alt="Rent Car">Rent Car</div>
+  <div class="service"><img src="https://images.unsplash.com/photo-1590080871434-6bc8d4b2a9b0?w=80" alt="Yates">Alquiler de Yates</div>
+  <div class="service"><img src="https://images.unsplash.com/photo-1575859347711-3be4867f3d7f?w=80" alt="Excursiones">Excursiones VIP</div>
 </section>
 
-<section id="payment-methods">
-<h2>Métodos de Pago</h2>
-<div class="payment-logos">
-  <img class="floating-logo" src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Western_Union_logo.svg" alt="Western Union">
-  <img class="floating-logo" src="https://upload.wikimedia.org/wikipedia/commons/7/70/Cash_App_Logo.svg" alt="Cash App">
-  <img class="floating-logo" src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Tether_Logo.svg" alt="USDT">
-</div>
+<section id="request-form">
+<h2>Solicitud de Servicio</h2>
+<input type="text" placeholder="Nombre" id="name">
+<input type="tel" placeholder="Número de teléfono" id="phone">
+<input type="email" placeholder="Email" id="email">
+<input type="date" id="startDate">
+<input type="date" id="endDate">
+<select id="serviceType">
+  <option>Taxi Aeroportuario</option>
+  <option>Transporte Privado</option>
+  <option>Transporte Empresarial</option>
+  <option>Rent Car</option>
+  <option>Alquiler de Yates</option>
+  <option>Excursiones VIP</option>
+</select>
+<button onclick="sendRequest()">Enviar a WhatsApp</button>
 </section>
 
 <section id="reviews">
 <h2>Opiniones de Clientes</h2>
-<div class="review">Excelente servicio, puntual y seguro. - Juan D.</div>
-<div class="review">Muy recomendable para tours VIP. - María P.</div>
-<div class="review">Los choferes son profesionales y amables. - Carlos S.</div>
-<div class="review">Servicio impecable de principio a fin. - Laura G.</div>
-<div class="review">Yates y excursiones de lujo. - Andrés R.</div>
-<div class="review">Transporte confiable 24/7. - Sofia L.</div>
-<div class="review">Reservación rápida y sencilla. - Miguel H.</div>
-<div class="review">Excelente atención al cliente. - Daniela V.</div>
-<div class="review">Recomendado para viajes familiares. - Pedro F.</div>
-<div class="review">Muy buena experiencia en Punta Cana. - Gabriela C.</div>
+<div class="review-slider">
+  <div class="review"><img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Juan D">Excelente servicio, puntual y seguro. - Juan D.</div>
+  <div class="review"><img src="https://randomuser.me/api/portraits/women/2.jpg" alt="María P">Muy recomendable para tours VIP. - María P.</div>
+  <div class="review"><img src="https://randomuser.me/api/portraits/men/3.jpg" alt="Carlos S">Los choferes son profesionales y amables. - Carlos S.</div>
+  <div class="review"><img src="https://randomuser.me/api/portraits/women/4.jpg" alt="Laura G">Servicio impecable de principio a fin. - Laura G.</div>
+  <div class="review"><img src="https://randomuser.me/api/portraits/men/5.jpg" alt="Andrés R">Yates y excursiones de lujo. - Andrés R.</div>
+  <div class="review"><img src="https://randomuser.me/api/portraits/women/6.jpg" alt="Sofia L">Transporte confiable 24/7. - Sofia L.</div>
+  <div class="review"><img src="https://randomuser.me/api/portraits/men/7.jpg" alt="Miguel H">Reservación rápida y sencilla. - Miguel H.</div>
+  <div class="review"><img src="https://randomuser.me/api/portraits/women/8.jpg" alt="Daniela V">Excelente atención al cliente. - Daniela V.</div>
+  <div class="review"><img src="https://randomuser.me/api/portraits/men/9.jpg" alt="Pedro F">Recomendado para viajes familiares. - Pedro F.</div>
+  <div class="review"><img src="https://randomuser.me/api/portraits/women/10.jpg" alt="Gabriela C">Muy buena experiencia en Punta Cana. - Gabriela C.</div>
+</div>
+</section>
+
+<section id="payment-methods">
+<h2>Métodos de Pago</h2>
+<img class="floating-logo" src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Western_Union_logo.svg" alt="Western Union">
+<img class="floating-logo" src="https://upload.wikimedia.org/wikipedia/commons/7/70/Cash_App_Logo.svg" alt="Cash App">
+<img class="floating-logo" src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Tether_Logo.svg" alt="USDT">
+<img class="floating-logo" src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" alt="Mastercard">
+<img class="floating-logo" src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa_Logo.png" alt="Visa">
+<img class="floating-logo" src="https://upload.wikimedia.org/wikipedia/commons/3/30/Apple_Pay_logo.svg" alt="Apple Pay">
+<img class="floating-logo" src="https://upload.wikimedia.org/wikipedia/commons/3/30/American_Express_logo.svg" alt="American Express">
+<img class="floating-logo" src="https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg" alt="BTC">
 </section>
 
 <div id="offerPopup" class="offer-popup">
@@ -105,7 +122,24 @@ nav{display:flex;gap:12px;align-items:center}
   </div>
 </div>
 
+<div class="whatsapp">
+  <a href="https://wa.me/18093937692" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:30px;height:30px">
+  </a>
+</div>
+
 <script>
+function sendRequest(){
+  const name=document.getElementById('name').value;
+  const phone=document.getElementById('phone').value;
+  const email=document.getElementById('email').value;
+  const start=document.getElementById('startDate').value;
+  const end=document.getElementById('endDate').value;
+  const service=document.getElementById('serviceType').value;
+  const msg=`Solicitud de Servicio:%0ANombre: ${name}%0ATeléfono: ${phone}%0AEmail: ${email}%0AFecha Inicio: ${start}%0AFecha Fin: ${end}%0AServicio: ${service}`;
+  window.open(`https://wa.me/18093937692?text=${msg}`,'_blank');
+}
+
 document.addEventListener('DOMContentLoaded',()=>{
   const popup=document.getElementById('offerPopup');
   const closeBtn=document.getElementById('closePopup');
@@ -113,6 +147,5 @@ document.addEventListener('DOMContentLoaded',()=>{
   closeBtn.addEventListener('click',()=>{popup.style.display='none'});
 });
 </script>
-
 </body>
 </html>
