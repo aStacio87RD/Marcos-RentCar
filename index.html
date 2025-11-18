@@ -1,3 +1,5 @@
+Marco rent v2
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -15,90 +17,62 @@
   --hero-gradient: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
 }
 * {box-sizing:border-box;margin:0;padding:0;}
-body{font-family:Inter, system-ui, Arial, sans-serif;background:var(--bg-1);color:#e6f7f7;line-height:1.5;}
+body{font-family:Inter, system-ui, Arial, sans-serif;background:var(--bg-1);color:#e6f7f7;}
 a{text-decoration:none;color:inherit;}
 .container{max-width:1200px;margin:0 auto;padding:20px;}
-header{display:flex;justify-content:space-between;align-items:center;padding:18px 0;flex-wrap:wrap;}
-header div{display:flex;align-items:center;gap:12px;}
+header{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
 .logo img{width:56px;height:56px;border-radius:12px;object-fit:cover;}
-nav{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:8px;}
-nav a{padding:8px 12px;border-radius:8px;transition:.3s;background:rgba(0,0,0,0.2);font-size:0.95rem;}
+nav{display:flex;gap:12px;align-items:center}
+nav a{padding:8px 12px;border-radius:8px;transition:.3s;background:rgba(0,0,0,0.2)}
 nav a:hover{background:var(--accent-2);color:#000}
 .hero{position:relative;height:60vh;display:flex;align-items:center;justify-content:center;background:var(--hero-gradient);color:#fff;text-align:center;overflow:hidden;border-radius:16px;}
 .hero h1{font-size:2.5rem;text-shadow:0 0 20px rgba(0,212,212,0.7);}
-.hero p{font-size:1.1rem;margin-top:8px;}
 .hero video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0.35;z-index:0;border-radius:16px;}
-.hero .content{position:relative;z-index:1;padding:0 12px;}
-
-/* Servicios */
+.hero .content{position:relative;z-index:1;}
+/* Servicios: ajustado para que las imágenes llenen el recuadro sin cambiar la estructura */
 .services{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:30px;}
+@media(max-width:900px){.services{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.services{grid-template-columns:1fr}}
 .service{position:relative;overflow:hidden;border-radius:16px;cursor:pointer;transition:.4s;display:flex;flex-direction:column;align-items:center;text-align:center;background:rgba(255,255,255,0.05);backdrop-filter:blur(6px);padding-bottom:12px;}
+/* imagenes ahora ocupan el ancho del recuadro y mantienen proporción con object-fit */
 .service img{width:100%;max-width:100%;height:160px;object-fit:cover;border-radius:12px;margin-top:12px;}
 .service:hover{transform:translateY(-6px);box-shadow:0 0 36px var(--accent),0 0 60px var(--accent-2)}
 .service h3{margin:12px 0;color:#fff;font-size:1.2rem;}
-
-/* Formulario de solicitud */
-#request-form{background:rgba(0,0,0,0.25);padding:25px;border-radius:16px;max-width:500px;margin:30px auto;display:flex;flex-direction:column;gap:12px;backdrop-filter:blur(6px);}
-#request-form input,#request-form select{padding:12px;border-radius:12px;border:none;outline:none;font-size:1rem;width:100%;}
+#request-form{background:rgba(0,0,0,0.25);padding:25px;border-radius:16px;max-width:500px;margin:30px auto;display:flex;flex-direction:column;gap:12px;backdrop-filter:blur(6px)}
+#request-form input,#request-form select{padding:12px;border-radius:12px;border:none;outline:none;font-size:1rem;}
 #request-form button{cursor:pointer;background:var(--accent);color:#000;border:none;padding:12px 20px;border-radius:12px;font-size:1.1rem;transition:.3s}
 #request-form button:hover{box-shadow:0 0 28px var(--accent),0 0 50px var(--accent-2);transform:scale(1.05)}
-
-/* Reviews */
+/* Reviews / slider */
 .review-slider{display:flex;overflow-x:auto;gap:16px;padding:16px;margin-top:20px;scroll-behavior:smooth;scroll-snap-type:x mandatory;}
 .review{min-width:250px;background:rgba(255,255,255,0.05);padding:16px;border-radius:16px;display:flex;flex-direction:column;align-items:center;text-align:center;backdrop-filter:blur(4px);transition:.3s;scroll-snap-align:center;}
 .review img{width:60px;height:60px;border-radius:50%;margin-bottom:12px;object-fit:cover;}
 .review:hover{transform:translateY(-4px);box-shadow:0 0 28px var(--accent),0 0 50px var(--accent-2);}
-
-/* Payment Logos */
 #payment-methods{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:40px}
 .floating-logo{height:60px;object-fit:contain;animation:float 3s ease-in-out infinite;transition:transform .25s,filter .25s}
 .floating-logo:hover{transform:scale(1.3);filter:drop-shadow(0 0 28px var(--gold));animation:glowPulse 1.6s ease-in-out infinite}
-
-/* Animaciones */
 @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-14px)}100%{transform:translateY(0)}}
 @keyframes glowPulse{0%{filter:drop-shadow(0 0 0 rgba(255,215,0,0))}50%{filter:drop-shadow(0 0 28px rgba(255,215,0,0.95))}100%{filter:drop-shadow(0 0 0 rgba(255,215,0,0))}}
-
-/* Oferta popup */
 .offer-popup{position:fixed;left:50%;top:15%;transform:translateX(-50%);display:none;z-index:120}
 .offer-inner{position:relative;padding:20px;border-radius:16px;background:#fff;color:#000;max-width:480px;border:3px solid var(--gold);box-shadow:0 0 40px rgba(255,215,0,0.85);overflow:visible;text-align:center}
 .offer-inner h2{margin-bottom:14px}
 .offer-cta{display:flex;gap:14px;justify-content:center;margin-top:16px}
 #closePopup{background:red;color:#fff;cursor:pointer;border:none;padding:10px 16px;border-radius:10px;transition:.3s}
 #closePopup:hover{box-shadow:0 0 20px red;transform:scale(1.05)}
-
-/* WhatsApp flotante */
-.whatsapp{position:fixed;right:20px;bottom:20px;background:linear-gradient(90deg,#25D366,#00b894);padding:12px;border-radius:50px;box-shadow:0 12px 36px rgba(0,0,0,0.6);display:flex;gap:12px;align-items:center;color:#fff;z-index:60;transition:.3s}
-.whatsapp:hover{transform:scale(1.15);box-shadow:0 0 30px var(--accent),0 0 50px var(--accent-2)}
-
-/* Caja de comentarios */
+.whatsapp{position:fixed;right:20px;bottom:20px;background:linear-gradient(90deg,#25D366,#00b894);padding:14px;border-radius:60px;box-shadow:0 12px 36px rgba(0,0,0,0.6);display:flex;gap:12px;align-items:center;color:#fff;z-index:60;transition:.3s}
+.whatsapp:hover{transform:scale(1.18);box-shadow:0 0 30px var(--accent),0 0 50px var(--accent-2)}
+/* Caja de comentarios (añadida) */
 .comment-box{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.04);padding:18px;border-radius:12px;max-width:780px;margin:18px auto 0;display:flex;flex-direction:column;gap:10px;}
-.comment-box input[type="text"], .comment-box textarea {padding:12px;border-radius:10px;border:none;background:rgba(0,0,0,0.2);color:#e6f7f7;outline:none;width:100%;}
+.comment-box input[type="text"], .comment-box textarea {padding:12px;border-radius:10px;border:none;background:rgba(0,0,0,0.2);color:#e6f7f7;outline:none;}
 .comment-box button{align-self:flex-end;padding:10px 16px;border-radius:10px;border:none;background:var(--accent);color:#000;cursor:pointer;transition:transform .18s}
 .comment-box button:hover{transform:scale(1.03)}
-
-/* Responsive mobile */
-@media (max-width:900px){
-  .services{grid-template-columns:repeat(2,1fr)}
-  .service img{height:150px;}
-  nav{justify-content:center;}
-}
-@media (max-width:600px){
-  .hero h1{font-size:1.8rem;}
-  .hero p{font-size:1rem;}
-  .services{grid-template-columns:1fr;gap:14px;}
-  .service img{height:140px;}
-  #request-form{padding:18px;}
-  .review{min-width:200px;padding:12px;}
-  #payment-methods{gap:12px;}
-  .floating-logo{height:50px;}
-  .whatsapp{padding:10px;right:12px;bottom:12px;}
-  header{flex-direction:column;gap:12px;}
-  nav a{padding:6px 10px;font-size:0.9rem;}
-}
-@media (max-width:400px){
-  .hero h1{font-size:1.5rem;}
-  .hero p{font-size:0.95rem;}
-  #request-form button{font-size:1rem;padding:10px 14px;}
+.particles{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none}
+.particle{position:absolute;width:6px;height:6px;background:var(--gold);border-radius:50%;animation:particleMove 3s linear infinite}
+@keyframes particleMove{0%{transform:translate(0,0)}100%{transform:translate(calc(var(--x)*1px),calc(var(--y)*1px))}}
+/* pequeños ajustes responsivos para review slider y comment box */
+@media (max-width:700px){
+  .review{min-width:220px}
+  .service img{height:140px}
+  .comment-box{padding:14px}
 }
 </style>
 </head>
@@ -116,8 +90,8 @@ nav a:hover{background:var(--accent-2);color:#000}
 
 <div class="container">
 <header>
-  <div>
-    <img class="logo" src="https://4x4carrentalrwanda.com/wp-content/uploads/2025/07/Rent-a-car-Islmabad-1.png?q=10&w=20" alt="logo">
+  <div style="display:flex;gap:12px;align-items:center">
+    <img class="logo" src="https://4x4carrentalrwanda.com/wp-content/uploads/2025/07/Rent-a-car-Islmabad-1.png?q=10&w=20" alt="logo" width="170">
     <div>
       <strong style="font-size:1.4rem">Marcos Rent Car</strong><br><small>Transporte VIP · Punta Cana</small>
     </div>
@@ -161,8 +135,12 @@ nav a:hover{background:var(--accent-2);color:#000}
 <div class="review-slider" id="reviewSlider">
   <div class="review"><img src="https://randomuser.me/api/portraits/men/1.jpg" alt="avatar"><p>Excelente servicio, puntual y seguro. - Juan D.</p></div>
   <div class="review"><img src="https://randomuser.me/api/portraits/women/2.jpg" alt="avatar"><p>Muy recomendable para tours VIP. - María P.</p></div>
+  <div class="review"><img src="https://randomuser.me/api/portraits/men/3.jpg" alt="avatar"><p>Los choferes son profesionales y amables. - Carlos S.</p></div>
+  <div class="review"><img src="https://randomuser.me/api/portraits/women/4.jpg" alt="avatar"><p>Servicio impecable de principio a fin. - Laura G.</p></div>
+  <div class="review"><img src="https://randomuser.me/api/portraits/men/5.jpg" alt="avatar"><p>Yates y excursiones de lujo. - Andrés R.</p></div>
 </div>
 
+<!-- Caja de comentarios añadida justo debajo de opiniones (sin alterar estructuras existentes) -->
 <div class="comment-box" id="commentBox">
   <label style="font-size:0.95rem;color:#e6f7f7">Deja tu comentario</label>
   <input type="text" id="commentName" placeholder="Tu nombre">
@@ -173,13 +151,18 @@ nav a:hover{background:var(--accent-2);color:#000}
   </div>
   <small style="color:#cfecec;opacity:0.8">Los comentarios se guardan en tu navegador y se mostrarán en el slider de opiniones.</small>
 </div>
+
 </section>
 
 <section id="payment-methods">
 <h2>Métodos de Pago</h2>
+<img class="floating-logo" src="data:image/png;base64,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" alt="Western Union" width="100">
+<img class="floating-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Square_Cash_app_logo.svg/1920px-Square_Cash_app_logo.svg.png" alt="Cash App">
+<img class="floating-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Tether_USDT.png/1200px-Tether_USDT.png?20211129171143" alt="USDT">
 <img class="floating-logo" src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" alt="Mastercard">
-<img class="floating-logo" src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa">
-<img class="floating-logo" src="https://www.nicepng.com/png/full/235-2355602_apple-pay-with-stripe-apple-pay-logo-white.png" alt="Apple Pay">
+<img class="floating-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/1599px-Visa_Inc._logo.svg.png" alt="Visa" width="80">
+<img class="floating-logo" src="https://www.nicepng.com/png/full/235-2355602_apple-pay-with-stripe-apple-pay-logo-white.png" alt="Apple Pay" width="80">
+<img class="floating-logo" src="https://upload.wikimedia.org/wikipedia/commons/3/30/American_Express_logo.svg" alt="American Express">
 <img class="floating-logo" src="https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg" alt="BTC">
 </section>
 
@@ -197,12 +180,11 @@ nav a:hover{background:var(--accent-2);color:#000}
 
 <div class="whatsapp">
   <a href="https://wa.me/18093937692" target="_blank">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" style="width:30px;height:30px" alt="WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" style="width:35px;height:35px" alt="WhatsApp">
   </a>
 </div>
 
 <script>
-// Función WhatsApp
 function sendRequest(){
   const name=document.getElementById('name').value;
   const phone=document.getElementById('phone').value;
@@ -213,8 +195,6 @@ function sendRequest(){
   const msg=encodeURIComponent(`Solicitud de Servicio:\nNombre: ${name}\nTeléfono: ${phone}\nEmail: ${email}\nFecha Inicio: ${start}\nFecha Fin: ${end}\nServicio: ${service}`);
   window.open(`https://wa.me/18093937692?text=${msg}`,'_blank');
 }
-
-// Popup y partículas
 document.addEventListener('DOMContentLoaded',()=>{
   const popup=document.getElementById('offerPopup');
   const closeBtn=document.getElementById('closePopup');
@@ -233,7 +213,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 });
 </script>
 
-<!-- Comentarios auto-slide -->
+<!-- NUEVO SCRIPT: manejo de comentarios y auto-slide para la sección de opiniones -->
 <script>
 (function(){
   const slider = document.getElementById('reviewSlider');
@@ -242,25 +222,113 @@ document.addEventListener('DOMContentLoaded',()=>{
   const textInput = document.getElementById('commentText');
   const avatarInput = document.getElementById('commentAvatar');
 
+  // Cargar comentarios guardados en localStorage y añadir al slider
   function loadComments(){
-    const comments = JSON.parse(localStorage.getItem('reviews')||'[]');
-    slider.innerHTML='';
-    comments.forEach(c=>{
-      const div=document.createElement('div');
-      div.className='review';
-      div.innerHTML=`<img src="${c.avatar||'https://randomuser.me/api/portraits/lego/1.jpg'}" alt="avatar"><p>${c.text}</p>`;
-      slider.appendChild(div);
-    });
+    try{
+      const saved = JSON.parse(localStorage.getItem('marcos_reviews')) || [];
+      saved.forEach(c => appendReview(c.text, c.name, c.avatar));
+    }catch(e){ console.warn('No se pudieron cargar comentarios guardados', e); }
   }
-  submitBtn.addEventListener('click',()=>{
-    if(!nameInput.value||!textInput.value)return alert('Completa todos los campos');
-    const comments=JSON.parse(localStorage.getItem('reviews')||'[]');
-    comments.push({name:nameInput.value,text:textInput.value,avatar:avatarInput.value});
-    localStorage.setItem('reviews',JSON.stringify(comments));
+
+  // Guardar comentario en localStorage
+  function saveComment(name, text, avatar){
+    try{
+      const saved = JSON.parse(localStorage.getItem('marcos_reviews')) || [];
+      saved.push({name, text, avatar});
+      localStorage.setItem('marcos_reviews', JSON.stringify(saved));
+    }catch(e){ console.warn('No se pudo guardar comentario', e); }
+  }
+
+  // Añade un elemento .review al slider (sin alterar estructura existente)
+  function appendReview(text, name, avatar){
+    const wrap = document.createElement('div');
+    wrap.className = 'review';
+    const img = document.createElement('img');
+    // si no hay avatar, usar placeholder localuser
+    img.src = avatar && avatar.trim() !== '' ? avatar : `https://ui-avatars.com/api/?name=${encodeURIComponent(name||'Usuario')}&background=0D1117&color=00d4d4&size=128`;
+    img.alt = name || 'avatar';
+    const p = document.createElement('p');
+    p.textContent = `${text} - ${name || 'Anónimo'}`;
+    wrap.appendChild(img);
+    wrap.appendChild(p);
+    // Append al final del slider (respetando la estructura original)
+    slider.appendChild(wrap);
+
+    // after appending, scroll to show the new review
+    setTimeout(()=>{ smoothScrollToEnd(); }, 120);
+  }
+
+  // Manejador del envio
+  function handleSubmit(){
+    const name = nameInput.value.trim();
+    const text = textInput.value.trim();
+    const avatar = avatarInput.value.trim();
+
+    if(!name || !text){
+      alert('Por favor completa tu nombre y tu opinión.');
+      return;
+    }
+
+    appendReview(text, name, avatar);
+    saveComment(name, text, avatar);
+
+    // limpiar campos
+    nameInput.value = '';
+    textInput.value = '';
+    avatarInput.value = '';
+  }
+
+  submitBtn.addEventListener('click', handleSubmit);
+
+  // AUTO-SLIDE: desplazamiento horizontal suave a intervalos
+  let autoSlideInterval = null;
+  function startAutoSlide(){
+    // limpia si ya existe uno
+    if(autoSlideInterval) clearInterval(autoSlideInterval);
+    autoSlideInterval = setInterval(()=> {
+      // desplazamiento por ancho de slide promedio
+      if(!slider) return;
+      const children = slider.querySelectorAll('.review');
+      if(children.length === 0) return;
+      // calcular siguiente posición
+      const visibleWidth = slider.clientWidth;
+      const scrollLeft = slider.scrollLeft;
+      const maxScroll = slider.scrollWidth - visibleWidth;
+      // si estamos casi al final, regresar al inicio
+      if(scrollLeft + 10 >= maxScroll){
+        slider.scrollTo({left:0, behavior:'smooth'});
+      } else {
+        // mover a la derecha por una cantidad igual a la mitad del contenedor o al ancho de la primera slide
+        const first = children[0];
+        const step = first ? first.offsetWidth + 16 : Math.round(visibleWidth/2);
+        slider.scrollBy({left: step, behavior:'smooth'});
+      }
+    }, 4200); // 4.2s
+  }
+
+  function smoothScrollToEnd(){
+    if(!slider) return;
+    slider.scrollTo({left: slider.scrollWidth, behavior:'smooth'});
+  }
+
+  // Pausar auto-slide cuando el usuario interactúa con el slider (hover o touch)
+  function addInteractionHandlers(){
+    if(!slider) return;
+    slider.addEventListener('mouseenter', ()=> { if(autoSlideInterval) clearInterval(autoSlideInterval); });
+    slider.addEventListener('mouseleave', ()=> { startAutoSlide(); });
+    slider.addEventListener('touchstart', ()=> { if(autoSlideInterval) clearInterval(autoSlideInterval); });
+    slider.addEventListener('touchend', ()=> { startAutoSlide(); });
+  }
+
+  // Inicialización al cargar el DOM
+  document.addEventListener('DOMContentLoaded', function(){
     loadComments();
-    nameInput.value='';textInput.value='';avatarInput.value='';
+    startAutoSlide();
+    addInteractionHandlers();
   });
-  loadComments();
+
+  // Exponer funciones para debug si es necesario (no obligatorio)
+  window._marcosReviews = { appendReview, loadComments, saveComment };
 })();
 </script>
 
