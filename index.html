@@ -7,7 +7,6 @@
 <meta name="description" content="Marcos Rent Car: Taxi, transporte privado, tours VIP, alquiler de yates y rent a car en Punta Cana. Disponibilidad en toda la isla.">
 <meta name="keywords" content="rent car punta cana, taxi punta cana, yates punta cana, excursiones vip, transporte privado, airport transfer punta cana">
 <style>
-/* ------------------- EL CSS EXISTENTE QUEDA INTACTO ------------------- */
 :root {
   --accent: #00d4d4;
   --accent-2: #6ee7b7;
@@ -28,10 +27,12 @@ nav a:hover{background:var(--accent-2);color:#000}
 .hero h1{font-size:2.5rem;text-shadow:0 0 20px rgba(0,212,212,0.7);}
 .hero video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0.35;z-index:0;border-radius:16px;}
 .hero .content{position:relative;z-index:1;}
+/* Servicios: ajustado para que las imágenes llenen el recuadro sin cambiar la estructura */
 .services{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:30px;}
 @media(max-width:900px){.services{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.services{grid-template-columns:1fr}}
 .service{position:relative;overflow:hidden;border-radius:16px;cursor:pointer;transition:.4s;display:flex;flex-direction:column;align-items:center;text-align:center;background:rgba(255,255,255,0.05);backdrop-filter:blur(6px);padding-bottom:12px;}
+/* imagenes ahora ocupan el ancho del recuadro y mantienen proporción con object-fit */
 .service img{width:100%;max-width:100%;height:160px;object-fit:cover;border-radius:12px;margin-top:12px;}
 .service:hover{transform:translateY(-6px);box-shadow:0 0 36px var(--accent),0 0 60px var(--accent-2)}
 .service h3{margin:12px 0;color:#fff;font-size:1.2rem;}
@@ -39,6 +40,7 @@ nav a:hover{background:var(--accent-2);color:#000}
 #request-form input,#request-form select{padding:12px;border-radius:12px;border:none;outline:none;font-size:1rem;}
 #request-form button{cursor:pointer;background:var(--accent);color:#000;border:none;padding:12px 20px;border-radius:12px;font-size:1.1rem;transition:.3s}
 #request-form button:hover{box-shadow:0 0 28px var(--accent),0 0 50px var(--accent-2);transform:scale(1.05)}
+/* Reviews / slider */
 .review-slider{display:flex;overflow-x:auto;gap:16px;padding:16px;margin-top:20px;scroll-behavior:smooth;scroll-snap-type:x mandatory;}
 .review{min-width:250px;background:rgba(255,255,255,0.05);padding:16px;border-radius:16px;display:flex;flex-direction:column;align-items:center;text-align:center;backdrop-filter:blur(4px);transition:.3s;scroll-snap-align:center;}
 .review img{width:60px;height:60px;border-radius:50%;margin-bottom:12px;object-fit:cover;}
@@ -56,6 +58,7 @@ nav a:hover{background:var(--accent-2);color:#000}
 #closePopup:hover{box-shadow:0 0 20px red;transform:scale(1.05)}
 .whatsapp{position:fixed;right:20px;bottom:20px;background:linear-gradient(90deg,#25D366,#00b894);padding:14px;border-radius:60px;box-shadow:0 12px 36px rgba(0,0,0,0.6);display:flex;gap:12px;align-items:center;color:#fff;z-index:60;transition:.3s}
 .whatsapp:hover{transform:scale(1.18);box-shadow:0 0 30px var(--accent),0 0 50px var(--accent-2)}
+/* Caja de comentarios (añadida) */
 .comment-box{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.04);padding:18px;border-radius:12px;max-width:780px;margin:18px auto 0;display:flex;flex-direction:column;gap:10px;}
 .comment-box input[type="text"], .comment-box textarea {padding:12px;border-radius:10px;border:none;background:rgba(0,0,0,0.2);color:#e6f7f7;outline:none;}
 .comment-box button{align-self:flex-end;padding:10px 16px;border-radius:10px;border:none;background:var(--accent);color:#000;cursor:pointer;transition:transform .18s}
@@ -63,6 +66,7 @@ nav a:hover{background:var(--accent-2);color:#000}
 .particles{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none}
 .particle{position:absolute;width:6px;height:6px;background:var(--gold);border-radius:50%;animation:particleMove 3s linear infinite}
 @keyframes particleMove{0%{transform:translate(0,0)}100%{transform:translate(calc(var(--x)*1px),calc(var(--y)*1px))}}
+/* pequeños ajustes responsivos para review slider y comment box */
 @media (max-width:700px){
   .review{min-width:220px}
   .service img{height:140px}
@@ -98,12 +102,12 @@ nav a:hover{background:var(--accent-2);color:#000}
 </header>
 
 <section class="services" id="services">
-  <div class="service" data-service="Taxi Aeroportuario"><img src="https://aeropuertolasamericas.com/wp-content/uploads/2023/11/AERODOM-Servicios-de-Taxi.jpg?w=120" alt="Taxi"><h3>Taxi Aeroportuario</h3></div>
-  <div class="service" data-service="Transporte Privado"><img src="https://americatransportationtours.com/wp-content/uploads/2020/11/privado.jpg?w=120" alt="Transporte"><h3>Transporte Privado</h3></div>
-  <div class="service" data-service="Transporte Empresarial"><img src="https://www.dominicantours.com.do/images/fleet.png?w=120" alt="Empresarial"><h3>Transporte Empresarial</h3></div>
-  <div class="service" data-service="Rent Car"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRU0bFOIafw0vGpZRulgnpFnEYB6mU4TRaZBA&s?w=120" alt="Rent Car"><h3>Rent Car</h3></div>
-  <div class="service" data-service="Alquiler de Yates"><img src="https://www.barcelonasailboats.com/wp-content/uploads/2020/03/Super-yacht-Barcelona.jpg?w=120" alt="Yates"><h3>Alquiler de Yates</h3></div>
-  <div class="service" data-service="Excursiones VIP"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQE3yDBeKA0Qk9C392Eg3mo2IlMwka0EiQjuGk5yrN1tfacw9ztfB-LOMdwVX9QKVnMLPc&usqp=CAU?w=120" alt="Excursiones"><h3>Excursiones VIP</h3></div>
+  <div class="service"><img src="https://aeropuertolasamericas.com/wp-content/uploads/2023/11/AERODOM-Servicios-de-Taxi.jpg?w=120" alt="Taxi"><h3>Taxi Aeroportuario</h3></div>
+  <div class="service"><img src="https://americatransportationtours.com/wp-content/uploads/2020/11/privado.jpg?w=120" alt="Transporte"><h3>Transporte Privado</h3></div>
+  <div class="service"><img src="https://www.dominicantours.com.do/images/fleet.png?w=120" alt="Empresarial"><h3>Transporte Empresarial</h3></div>
+  <div class="service"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRU0bFOIafw0vGpZRulgnpFnEYB6mU4TRaZBA&s?w=120" alt="Rent Car"><h3>Rent Car</h3></div>
+  <div class="service"><img src="https://www.barcelonasailboats.com/wp-content/uploads/2020/03/Super-yacht-Barcelona.jpg?w=120" alt="Yates"><h3>Alquiler de Yates</h3></div>
+  <div class="service"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQE3yDBeKA0Qk9C392Eg3mo2IlMwka0EiQjuGk5yrN1tfacw9ztfB-LOMdwVX9QKVnMLPc&usqp=CAU?w=120" alt="Excursiones"><h3>Excursiones VIP</h3></div>
 </section>
 
 <section id="request-form">
@@ -124,44 +128,98 @@ nav a:hover{background:var(--accent-2);color:#000}
 <button onclick="sendRequest()">Enviar a WhatsApp</button>
 </section>
 
-<!-- ------------------- BOTON FLOTANTE WHATSAPP CON MENSAJE PREDISEÑADO ------------------- -->
-<div class="whatsapp">
-  <a id="floatingWA" href="#" target="_blank">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" style="width:35px;height:35px" alt="WhatsApp">
-    <span style="margin-left:8px;font-size:0.9rem;">Chat</span>
-  </a>
+<section id="reviews">
+<h2>Opiniones de Clientes</h2>
+<div class="review-slider" id="reviewSlider">
+  <div class="review"><img src="https://randomuser.me/api/portraits/men/1.jpg" alt="avatar"><p>Excelente servicio, puntual y seguro. - Juan D.</p></div>
+  <div class="review"><img src="https://randomuser.me/api/portraits/women/2.jpg" alt="avatar"><p>Muy recomendable para tours VIP. - María P.</p></div>
+  <div class="review"><img src="https://randomuser.me/api/portraits/men/3.jpg" alt="avatar"><p>Los choferes son profesionales y amables. - Carlos S.</p></div>
+  <div class="review"><img src="https://randomuser.me/api/portraits/women/4.jpg" alt="avatar"><p>Servicio impecable de principio a fin. - Laura G.</p></div>
+  <div class="review"><img src="https://randomuser.me/api/portraits/men/5.jpg" alt="avatar"><p>Yates y excursiones de lujo. - Andrés R.</p></div>
 </div>
 
+<!-- Caja de comentarios añadida justo debajo de opiniones (sin alterar estructuras existentes) -->
+<div class="comment-box" id="commentBox">
+  <label style="font-size:0.95rem;color:#e6f7f7">Deja tu comentario</label>
+  <input type="text" id="commentName" placeholder="Tu nombre">
+  <textarea id="commentText" rows="3" placeholder="Escribe tu opinión..."></textarea>
+  <div style="display:flex;gap:8px;align-items:center;">
+    <input type="text" id="commentAvatar" placeholder="URL de tu imagen (opcional)" style="flex:1">
+    <button id="submitComment">Enviar</button>
+  </div>
+  <small style="color:#cfecec;opacity:0.8">Los comentarios se guardan en tu navegador y se mostrarán en el slider de opiniones.</small>
+</div>
+
+<!-- NUEVAS MEJORAS: contador y botón borrar comentarios -->
+<div style="max-width:780px;margin:8px auto 20px;text-align:right;color:#00d4d4;font-size:0.95rem">
+  Comentarios visibles: <span id="commentCount">0</span> | <button id="clearComments" style="background:red;color:#fff;border:none;border-radius:6px;padding:4px 8px;cursor:pointer">Borrar Todos</button>
+</div>
+
+</section>
+
+<section id="payment-methods">
+<h2>Métodos de Pago</h2>
+<img class="floating-logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAaAAAAB5CAMAAABIrgU4AAAAmVBMVEUAAAD/3jgYGBj/4jn/4zn/5Tr/5zr93DiKeB7/4Dn/6Dqymye9pSrEqyvRti4nIghoWxe3nyg3MAwWEwXcvzDjxjJUSRIQDgNJPxDtzjSPfR/Wui9jVhZyYxn21jaokyWBcBygjCNbTxQ/Nw7/7jx8bBvpyzPJryyWgyFgUxUuKAqtliY+Ng4hHAduXxjfwjEaFwZPRBEjHwgAEBD8AAAMRklEQVR4nO2dbUPivBKGy0kbSAFZFVRAoKDy4irq8/9/3Cl9ycwkaWlRdrs69ydN0yTN1aTJZBI8j8VisVgsFovFYrFYLBaLxWKxWCwWi8VisVgsFovFYrFY/6zul73pejwer6f95a+/XZi62vZ7/ahKxNU2uv3y3CPRziW2ScilaoOCVRK2bukQld85xPGQVN/IYnbhy0AIdZAQvpTTGb3uuxNKC7XMo/0W7hitFiQ1ajkizMfDyyejTIOApjFPg691HupCx91IIS8LK7Cn2qKbJHnReVn1tkfqu7auQpXL7yUhQ6FAQScJgyAxyu8k8ZDEhmSwG0vRohJy/IFizKQ7obRQACgoiCIgqZG7TEIEQZ+83IOQxpBpu77VRREAqC9afrewAnu+Sq++eZ3JdrDtVKz4ymorXW/TJGCuUF36vw9BrxICdFGHZr3nyZAWtAiVI46S6JWeBe6E0vwAkO+OoRQkNXJlliWk8EsxkPRqVuhbXZTqgLKri70XpzH1RoUxT9SFrmeVtnNSXWlzWMHjBLpmKwHqSnckFe50nD8DqKXEK0Q0AWXN8BOq+jXUPO4KgR6n69X3e4A6aNf+VKwEuFWo9E6k7SOwL5zyVYtqg9cCFRsoMoVghFVL0kNJhkgKEqRJrOCU4mNZLkOk6pEJYJ3EO6JzCLwVykDbl4I7IMpHc6S2Z0EGJbB/6j6pF+FyISZ+7kpyZB+ps/RAsp5fCYb+YSCypKJ3RkHfBp7DYcNw/4lIvdxkS7KxJxR4TkGUhG+0uRhQJlPAk64rHgWkKEl3guV1+2FwwiU8JCXUQ1ZTqTrQ0EX2M9EKquspg1ZKPAJqK9q2H3nYxD8rL7BTF0oT2E4FA2PAhH5mmA0qH4wlYBrX/BBbkro0tCZoA0yRCSlPG1BDE2UogotKyhwGg5lQlF5CJkF2wk4+7IW0w50MGzotcK+CnHgkpGJZrGlYGCQXlqu9t+khiP5LJZCkLUbZVRh0X5RrX2ZgMrqDhnq5e5myVamQj1pQbZBDqF6KZ9FUKk3p7KQhVLhKsdnyDs1TwrLC5KXgQJyzpHC5jzEoZ3mrwBmtSSM+YshFZHgVvkFIE7EB7QqJP+0Up1RMHz5jUMJ0ng7eh5MZo3JqzV4nx50aU1uzWpq2ug70tutn0F7y7c+0m2vMNqZ6YNOlY+r4xM8yS/BRDF0yvsQ7jym5JzKJPxg66z5n8PqRVxyqvJ5F4rGxUK58LCfZLVyPOC5Hf6nM74kqPeGfLwPfXJX6SXs6VQj9S8E3o/4T9IC3u/6n7rH8EfyY+yR+n7x8z/0lD+Vy5+KX/fxFjWHjWPT3yAAAAAElFTkSuQmCC" alt="Visa">
+<img class="floating-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Mastercard_Logo.svg/2560px-Mastercard_Logo.svg.png" alt="Mastercard">
+<img class="floating-logo" src="https://upload.wikimedia.org/wikipedia/commons/3/3e/PayPal_2014_logo.svg" alt="PayPal">
+</section>
+
 <script>
-// ------------------- DETECTAR IDIOMA DEL VISITANTE -------------------
-document.documentElement.lang = navigator.language || navigator.userLanguage || 'es';
-
-// ------------------- MENSAJE PREDETERMINADO PARA CADA SERVICIO -------------------
-const serviceMessages = {
-  "Taxi Aeroportuario": "Hola, quiero reservar un Taxi Aeroportuario.",
-  "Transporte Privado": "Hola, quiero reservar Transporte Privado.",
-  "Transporte Empresarial": "Hola, quiero reservar Transporte Empresarial.",
-  "Rent Car": "Hola, quiero reservar un Rent Car.",
-  "Alquiler de Yates": "Hola, quiero reservar un Alquiler de Yates.",
-  "Excursiones VIP": "Hola, quiero reservar una Excursión VIP."
-};
-
-// ------------------- ENVIAR FORMULARIO A WHATSAPP -------------------
+// Función de WhatsApp
 function sendRequest(){
-  const name=document.getElementById('name').value;
-  const phone=document.getElementById('phone').value;
-  const email=document.getElementById('email').value;
-  const start=document.getElementById('startDate').value;
-  const end=document.getElementById('endDate').value;
-  const service=document.getElementById('serviceType').value;
-  const msgText = serviceMessages[service] || service;
-  const msg=encodeURIComponent(`Solicitud de Servicio:\nNombre: ${name}\nTeléfono: ${phone}\nEmail: ${email}\nFecha Inicio: ${start}\nFecha Fin: ${end}\nServicio: ${msgText}`);
-  window.open(`https://wa.me/18093937692?text=${msg}`,'_blank');
+  const name = document.getElementById('name').value;
+  const phone = document.getElementById('phone').value;
+  const email = document.getElementById('email').value;
+  const start = document.getElementById('startDate').value;
+  const end = document.getElementById('endDate').value;
+  const service = document.getElementById('serviceType').value;
+  const msg = `Hola Marcos Rent Car!%0ANombre: ${name}%0ATel: ${phone}%0AEmail: ${email}%0AServicio: ${service}%0AFecha inicio: ${start}%0AFecha fin: ${end}`;
+  window.open(`https://wa.me/18296480853?text=${msg}`, '_blank');
 }
 
-// ------------------- BOTON FLOTANTE WHATSAPP INICIAL -------------------
-document.addEventListener('DOMContentLoaded', ()=>{
-  const floatingWA = document.getElementById('floatingWA');
-  floatingWA.href = `https://wa.me/18093937692?text=${encodeURIComponent('Hola, quiero más información sobre los servicios de Marcos Rent Car.')}`;
+// NUEVAS MEJORAS: comentarios guardados en localStorage y slider
+const reviewSlider = document.getElementById('reviewSlider');
+const submitComment = document.getElementById('submitComment');
+const commentName = document.getElementById('commentName');
+const commentText = document.getElementById('commentText');
+const commentAvatar = document.getElementById('commentAvatar');
+const commentCount = document.getElementById('commentCount');
+const clearComments = document.getElementById('clearComments');
+
+function loadComments(){
+  const comments = JSON.parse(localStorage.getItem('reviews')) || [];
+  reviewSlider.innerHTML = '';
+  comments.forEach(c => {
+    const div = document.createElement('div');
+    div.className='review';
+    div.innerHTML=`<img src="${c.avatar||'https://randomuser.me/api/portraits/lego/1.jpg'}" alt="avatar"><p>${c.text} - ${c.name}</p>`;
+    reviewSlider.appendChild(div);
+  });
+  commentCount.textContent = comments.length;
+}
+
+submitComment.addEventListener('click', ()=>{
+  const name = commentName.value.trim();
+  const text = commentText.value.trim();
+  const avatar = commentAvatar.value.trim();
+  if(!name||!text){alert('Por favor ingresa nombre y comentario');return;}
+  const comments = JSON.parse(localStorage.getItem('reviews')) || [];
+  comments.push({name,text,avatar});
+  localStorage.setItem('reviews',JSON.stringify(comments));
+  commentName.value=''; commentText.value=''; commentAvatar.value='';
+  loadComments();
+  alert('¡Gracias por tu comentario!'); // Mensaje de agradecimiento
 });
+
+clearComments.addEventListener('click', ()=>{
+  if(confirm('¿Deseas borrar todos los comentarios?')){
+    localStorage.removeItem('reviews');
+    loadComments();
+  }
+});
+
+loadComments();
 </script>
+
+</body>
+</html>
