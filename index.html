@@ -27,20 +27,23 @@ nav a:hover{background:var(--accent-2);color:#000}
 .hero h1{font-size:2.5rem;text-shadow:0 0 20px rgba(0,212,212,0.7);}
 .hero video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0.35;z-index:0;border-radius:16px;}
 .hero .content{position:relative;z-index:1;}
+/* Servicios: ajustado para que las imágenes llenen el recuadro sin cambiar la estructura */
 .services{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:30px;}
 @media(max-width:900px){.services{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.services{grid-template-columns:1fr}}
-.service{position:relative;overflow:hidden;border-radius:16px;cursor:pointer;transition:.4s;display:flex;flex-direction:column;align-items:center;text-align:center;background:rgba(255,255,255,0.05);backdrop-filter:blur(6px);}
-.service img{width:120px;height:120px;object-fit:cover;border-radius:16px;margin-top:12px;}
+.service{position:relative;overflow:hidden;border-radius:16px;cursor:pointer;transition:.4s;display:flex;flex-direction:column;align-items:center;text-align:center;background:rgba(255,255,255,0.05);backdrop-filter:blur(6px);padding-bottom:12px;}
+/* imagenes ahora ocupan el ancho del recuadro y mantienen proporción con object-fit */
+.service img{width:100%;max-width:100%;height:160px;object-fit:cover;border-radius:12px;margin-top:12px;}
 .service:hover{transform:translateY(-6px);box-shadow:0 0 36px var(--accent),0 0 60px var(--accent-2)}
 .service h3{margin:12px 0;color:#fff;font-size:1.2rem;}
 #request-form{background:rgba(0,0,0,0.25);padding:25px;border-radius:16px;max-width:500px;margin:30px auto;display:flex;flex-direction:column;gap:12px;backdrop-filter:blur(6px)}
 #request-form input,#request-form select{padding:12px;border-radius:12px;border:none;outline:none;font-size:1rem;}
 #request-form button{cursor:pointer;background:var(--accent);color:#000;border:none;padding:12px 20px;border-radius:12px;font-size:1.1rem;transition:.3s}
 #request-form button:hover{box-shadow:0 0 28px var(--accent),0 0 50px var(--accent-2);transform:scale(1.05)}
-.review-slider{display:flex;overflow-x:auto;gap:16px;padding:16px;margin-top:20px;scroll-behavior:smooth;}
-.review{min-width:250px;background:rgba(255,255,255,0.05);padding:16px;border-radius:16px;display:flex;flex-direction:column;align-items:center;text-align:center;backdrop-filter:blur(4px);transition:.3s}
-.review img{width:60px;height:60px;border-radius:50%;margin-bottom:12px;}
+/* Reviews / slider */
+.review-slider{display:flex;overflow-x:auto;gap:16px;padding:16px;margin-top:20px;scroll-behavior:smooth;scroll-snap-type:x mandatory;}
+.review{min-width:250px;background:rgba(255,255,255,0.05);padding:16px;border-radius:16px;display:flex;flex-direction:column;align-items:center;text-align:center;backdrop-filter:blur(4px);transition:.3s;scroll-snap-align:center;}
+.review img{width:60px;height:60px;border-radius:50%;margin-bottom:12px;object-fit:cover;}
 .review:hover{transform:translateY(-4px);box-shadow:0 0 28px var(--accent),0 0 50px var(--accent-2);}
 #payment-methods{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:40px}
 .floating-logo{height:60px;object-fit:contain;animation:float 3s ease-in-out infinite;transition:transform .25s,filter .25s}
@@ -55,9 +58,20 @@ nav a:hover{background:var(--accent-2);color:#000}
 #closePopup:hover{box-shadow:0 0 20px red;transform:scale(1.05)}
 .whatsapp{position:fixed;right:20px;bottom:20px;background:linear-gradient(90deg,#25D366,#00b894);padding:14px;border-radius:60px;box-shadow:0 12px 36px rgba(0,0,0,0.6);display:flex;gap:12px;align-items:center;color:#fff;z-index:60;transition:.3s}
 .whatsapp:hover{transform:scale(1.18);box-shadow:0 0 30px var(--accent),0 0 50px var(--accent-2)}
+/* Caja de comentarios (añadida) */
+.comment-box{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.04);padding:18px;border-radius:12px;max-width:780px;margin:18px auto 0;display:flex;flex-direction:column;gap:10px;}
+.comment-box input[type="text"], .comment-box textarea {padding:12px;border-radius:10px;border:none;background:rgba(0,0,0,0.2);color:#e6f7f7;outline:none;}
+.comment-box button{align-self:flex-end;padding:10px 16px;border-radius:10px;border:none;background:var(--accent);color:#000;cursor:pointer;transition:transform .18s}
+.comment-box button:hover{transform:scale(1.03)}
 .particles{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none}
 .particle{position:absolute;width:6px;height:6px;background:var(--gold);border-radius:50%;animation:particleMove 3s linear infinite}
 @keyframes particleMove{0%{transform:translate(0,0)}100%{transform:translate(calc(var(--x)*1px),calc(var(--y)*1px))}}
+/* pequeños ajustes responsivos para review slider y comment box */
+@media (max-width:700px){
+  .review{min-width:220px}
+  .service img{height:140px}
+  .comment-box{padding:14px}
+}
 </style>
 </head>
 <body>
@@ -116,13 +130,26 @@ nav a:hover{background:var(--accent-2);color:#000}
 
 <section id="reviews">
 <h2>Opiniones de Clientes</h2>
-<div class="review-slider">
-  <div class="review"><img src="https://randomuser.me/api/portraits/men/1.jpg"><p>Excelente servicio, puntual y seguro. - Juan D.</p></div>
-  <div class="review"><img src="https://randomuser.me/api/portraits/women/2.jpg"><p>Muy recomendable para tours VIP. - María P.</p></div>
-  <div class="review"><img src="https://randomuser.me/api/portraits/men/3.jpg"><p>Los choferes son profesionales y amables. - Carlos S.</p></div>
-  <div class="review"><img src="https://randomuser.me/api/portraits/women/4.jpg"><p>Servicio impecable de principio a fin. - Laura G.</p></div>
-  <div class="review"><img src="https://randomuser.me/api/portraits/men/5.jpg"><p>Yates y excursiones de lujo. - Andrés R.</p></div>
+<div class="review-slider" id="reviewSlider">
+  <div class="review"><img src="https://randomuser.me/api/portraits/men/1.jpg" alt="avatar"><p>Excelente servicio, puntual y seguro. - Juan D.</p></div>
+  <div class="review"><img src="https://randomuser.me/api/portraits/women/2.jpg" alt="avatar"><p>Muy recomendable para tours VIP. - María P.</p></div>
+  <div class="review"><img src="https://randomuser.me/api/portraits/men/3.jpg" alt="avatar"><p>Los choferes son profesionales y amables. - Carlos S.</p></div>
+  <div class="review"><img src="https://randomuser.me/api/portraits/women/4.jpg" alt="avatar"><p>Servicio impecable de principio a fin. - Laura G.</p></div>
+  <div class="review"><img src="https://randomuser.me/api/portraits/men/5.jpg" alt="avatar"><p>Yates y excursiones de lujo. - Andrés R.</p></div>
 </div>
+
+<!-- Caja de comentarios añadida justo debajo de opiniones (sin alterar estructuras existentes) -->
+<div class="comment-box" id="commentBox">
+  <label style="font-size:0.95rem;color:#e6f7f7">Deja tu comentario</label>
+  <input type="text" id="commentName" placeholder="Tu nombre">
+  <textarea id="commentText" rows="3" placeholder="Escribe tu opinión..."></textarea>
+  <div style="display:flex;gap:8px;align-items:center;">
+    <input type="text" id="commentAvatar" placeholder="URL de tu imagen (opcional)" style="flex:1">
+    <button id="submitComment">Enviar</button>
+  </div>
+  <small style="color:#cfecec;opacity:0.8">Los comentarios se guardan en tu navegador y se mostrarán en el slider de opiniones.</small>
+</div>
+
 </section>
 
 <section id="payment-methods">
@@ -182,6 +209,125 @@ document.addEventListener('DOMContentLoaded',()=>{
     particlesContainer.appendChild(p);
   }
 });
+</script>
+
+<!-- NUEVO SCRIPT: manejo de comentarios y auto-slide para la sección de opiniones -->
+<script>
+(function(){
+  const slider = document.getElementById('reviewSlider');
+  const submitBtn = document.getElementById('submitComment');
+  const nameInput = document.getElementById('commentName');
+  const textInput = document.getElementById('commentText');
+  const avatarInput = document.getElementById('commentAvatar');
+
+  // Cargar comentarios guardados en localStorage y añadir al slider
+  function loadComments(){
+    try{
+      const saved = JSON.parse(localStorage.getItem('marcos_reviews')) || [];
+      saved.forEach(c => appendReview(c.text, c.name, c.avatar));
+    }catch(e){ console.warn('No se pudieron cargar comentarios guardados', e); }
+  }
+
+  // Guardar comentario en localStorage
+  function saveComment(name, text, avatar){
+    try{
+      const saved = JSON.parse(localStorage.getItem('marcos_reviews')) || [];
+      saved.push({name, text, avatar});
+      localStorage.setItem('marcos_reviews', JSON.stringify(saved));
+    }catch(e){ console.warn('No se pudo guardar comentario', e); }
+  }
+
+  // Añade un elemento .review al slider (sin alterar estructura existente)
+  function appendReview(text, name, avatar){
+    const wrap = document.createElement('div');
+    wrap.className = 'review';
+    const img = document.createElement('img');
+    // si no hay avatar, usar placeholder localuser
+    img.src = avatar && avatar.trim() !== '' ? avatar : `https://ui-avatars.com/api/?name=${encodeURIComponent(name||'Usuario')}&background=0D1117&color=00d4d4&size=128`;
+    img.alt = name || 'avatar';
+    const p = document.createElement('p');
+    p.textContent = `${text} - ${name || 'Anónimo'}`;
+    wrap.appendChild(img);
+    wrap.appendChild(p);
+    // Append al final del slider (respetando la estructura original)
+    slider.appendChild(wrap);
+
+    // after appending, scroll to show the new review
+    setTimeout(()=>{ smoothScrollToEnd(); }, 120);
+  }
+
+  // Manejador del envio
+  function handleSubmit(){
+    const name = nameInput.value.trim();
+    const text = textInput.value.trim();
+    const avatar = avatarInput.value.trim();
+
+    if(!name || !text){
+      alert('Por favor completa tu nombre y tu opinión.');
+      return;
+    }
+
+    appendReview(text, name, avatar);
+    saveComment(name, text, avatar);
+
+    // limpiar campos
+    nameInput.value = '';
+    textInput.value = '';
+    avatarInput.value = '';
+  }
+
+  submitBtn.addEventListener('click', handleSubmit);
+
+  // AUTO-SLIDE: desplazamiento horizontal suave a intervalos
+  let autoSlideInterval = null;
+  function startAutoSlide(){
+    // limpia si ya existe uno
+    if(autoSlideInterval) clearInterval(autoSlideInterval);
+    autoSlideInterval = setInterval(()=> {
+      // desplazamiento por ancho de slide promedio
+      if(!slider) return;
+      const children = slider.querySelectorAll('.review');
+      if(children.length === 0) return;
+      // calcular siguiente posición
+      const visibleWidth = slider.clientWidth;
+      const scrollLeft = slider.scrollLeft;
+      const maxScroll = slider.scrollWidth - visibleWidth;
+      // si estamos casi al final, regresar al inicio
+      if(scrollLeft + 10 >= maxScroll){
+        slider.scrollTo({left:0, behavior:'smooth'});
+      } else {
+        // mover a la derecha por una cantidad igual a la mitad del contenedor o al ancho de la primera slide
+        const first = children[0];
+        const step = first ? first.offsetWidth + 16 : Math.round(visibleWidth/2);
+        slider.scrollBy({left: step, behavior:'smooth'});
+      }
+    }, 4200); // 4.2s
+  }
+
+  function smoothScrollToEnd(){
+    if(!slider) return;
+    slider.scrollTo({left: slider.scrollWidth, behavior:'smooth'});
+  }
+
+  // Pausar auto-slide cuando el usuario interactúa con el slider (hover o touch)
+  function addInteractionHandlers(){
+    if(!slider) return;
+    slider.addEventListener('mouseenter', ()=> { if(autoSlideInterval) clearInterval(autoSlideInterval); });
+    slider.addEventListener('mouseleave', ()=> { startAutoSlide(); });
+    slider.addEventListener('touchstart', ()=> { if(autoSlideInterval) clearInterval(autoSlideInterval); });
+    slider.addEventListener('touchend', ()=> { startAutoSlide(); });
+  }
+
+  // Inicialización al cargar el DOM
+  document.addEventListener('DOMContentLoaded', function(){
+    loadComments();
+    startAutoSlide();
+    addInteractionHandlers();
+  });
+
+  // Exponer funciones para debug si es necesario (no obligatorio)
+  window._marcosReviews = { appendReview, loadComments, saveComment };
+})();
 </script>
 
 </body>
